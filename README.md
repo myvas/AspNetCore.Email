@@ -14,15 +14,24 @@ How to Use
 ----------------
 * For Another AspNetCore Project:
 
+
 app.UseEmail(options=>{...});
+
 
 * For A Web Client Project:
 
+
 POST api/v1/email/send
+
+
 {
+
   "subject": "来自WebApi的测试邮件",
+  
   "body": "这是一封来自WebApi的测试邮件，您无须理会此邮件。"
+  
 }
+
 
 How to Build
 ----------------
