@@ -8,24 +8,25 @@ AspNetCore.EmailMiddleware
 What is this?
 ----------------
 
-A Middleware to Send Email built on latest AspNetCore (Tested on Linux or Windows)
+A Middleware and a WebApi to send Email built on latest AspNetCore (It works on Windows, but NOT Linux yet!)
 
 How to Use
 ----------------
-(1) For Another AspNetCore Project:
+* For Another AspNetCore Project:
 
 app.UseEmail(options=>{...});
 
-or (2) For A Web Client Project:
+* For A Web Client Project:
 
 POST api/v1/email/send
 {
-  "subject": "À´×ÔWebApiµÄ²âÊÔÓÊ¼ş",
-  "body": "ÕâÊÇÒ»·âÀ´×ÔWebApiµÄ²âÊÔÓÊ¼ş£¬ÄúÎŞĞëÀí»á´ËÓÊ¼ş¡£"
+  "subject": "æ¥è‡ªWebApiçš„æµ‹è¯•é‚®ä»¶",
+  "body": "è¿™æ˜¯ä¸€å°æ¥è‡ªWebApiçš„æµ‹è¯•é‚®ä»¶ï¼Œæ‚¨æ— é¡»ç†ä¼šæ­¤é‚®ä»¶ã€‚"
 }
 
 How to Build
 ----------------
 
 Use Visual Studio 2015 with Update 3 and .NET Core 1.1 installed.
+
 Download from Microsoft's official website: http://asp.net
