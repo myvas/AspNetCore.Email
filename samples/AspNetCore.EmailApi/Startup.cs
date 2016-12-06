@@ -41,10 +41,10 @@ namespace AspNetCore.WebApi.EmailApi
             // Add framework services.
             services.AddEmail(options =>
             {
-                options.SmtpServerAddress = "smtp.mxhichina.com";
-                options.SenderAccount = "sender@ricent.com";
-                options.SenderPassword = "Ricent1208";
-                options.SenderDisplayName = "Ricent";
+                options.SmtpServerAddress = Configuration["SmtpServerAddress"];
+                options.SenderAccount = Configuration["SenderAccount"];
+                options.SenderPassword = Configuration["SenderPassword"];
+                options.SenderDisplayName = Configuration["SenderDisplayName"];
             });
 
             // Inject an implementation of ISwaggerProvider with defaulted settings applied.
@@ -56,15 +56,9 @@ namespace AspNetCore.WebApi.EmailApi
                 options.SingleApiVersion(new Swashbuckle.Swagger.Model.Info
                 {
                     Version = "v1",
-                    Title = "Todo API",
-                    Description = "A simple example ASP.NET Core Web API",
+                    Title = "Email API",
+                    Description = "A simple ASP.NET Core Web API for Email service",
                     TermsOfService = "None",
-                    Contact = new Swashbuckle.Swagger.Model.Contact
-                    {
-                        Name = "FrankH",
-                        Email = "4848285@qq.com",
-                        Url = "http://twitter.com/frankh"
-                    },
                     License = new Swashbuckle.Swagger.Model.License
                     {
                         Name = "Apache License 2.0",

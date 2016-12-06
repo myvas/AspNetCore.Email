@@ -44,6 +44,7 @@
     "include": [
       "wwwroot",
       "**/*.cshtml",
+      "hosting.json",
       "appsettings.json",
       "web.config"
     ]
