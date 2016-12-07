@@ -15,6 +15,15 @@ namespace AspNetCore.EmailMiddleware.Services
 
         public EmailManager(EmailOptions options)
         {
+            if (string.IsNullOrWhiteSpace(options.SmtpServerAddress))
+            {
+                throw new ArgumentException(nameof(options.SmtpServerAddress));
+            }
+            if(string.IsNullOrWhiteSpace(options.SenderAccount))
+            {
+                throw new ArgumentException(nameof(options.SenderAccount));
+            }
+
             Options = options;
         }
 
@@ -33,18 +42,33 @@ namespace AspNetCore.EmailMiddleware.Services
             string[] recipients = input.Recipients.Split(',');
             foreach (string recipient in recipients)
             {
-                msg.To.Add(new MailAddress(recipient.Trim()));
+                try
+                {
+                    msg.To.Add(new MailAddress(recipient.Trim()));
+                }
+                catch { }
             }
 
-            string[] ccRecipients = input.Cc.Split(',');
-            foreach (string cc in ccRecipients)
+            if (!string.IsNullOrWhiteSpace(input.Cc))
             {
-                msg.CC.Add(new MailAddress(cc.Trim()));
+                string[] ccRecipients = input.Cc.Split(',');
+                foreach (string cc in ccRecipients)
+                {
+                    try
+                    {
+                        msg.CC.Add(new MailAddress(cc.Trim()));
+                    }
+                    catch { }
+                }
             }
-
+            
             if (!string.IsNullOrWhiteSpace(input.ReplyTo))
             {
-                msg.ReplyToList.Add(new MailAddress(input.ReplyTo));
+                try
+                {
+                    msg.ReplyToList.Add(new MailAddress(input.ReplyTo));
+                }
+                catch { }
             }
 
             using (SmtpClient client = new SmtpClient(Options.SmtpServerAddress))

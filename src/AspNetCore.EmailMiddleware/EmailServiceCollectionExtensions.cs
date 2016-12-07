@@ -29,8 +29,7 @@ namespace AspNetCore.EmailMiddleware
                 throw new ArgumentNullException(nameof(setupAction));
             }
 
-            EmailOptions options = new EmailOptions();
-            setupAction.Invoke(options);
+            services.Configure(setupAction);
             services.TryAddSingleton<IEmailSender, EmailService>();
 
             return services;

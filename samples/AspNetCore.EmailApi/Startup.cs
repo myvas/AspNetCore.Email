@@ -11,6 +11,8 @@ using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using AspNetCore.EmailMiddleware;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace AspNetCore.WebApi.EmailApi
 {
@@ -23,6 +25,13 @@ namespace AspNetCore.WebApi.EmailApi
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
+            if (env.IsDevelopment())
+            {
+                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+                builder.AddUserSecrets();
+            }
+
             Configuration = builder.Build();
         }
 
@@ -37,6 +46,18 @@ namespace AspNetCore.WebApi.EmailApi
 
             // Add framework services.
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                       builder =>
+                       {
+                           builder.AllowAnyOrigin();
+                       });
+            });
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllOrigins"));
+            });
 
             // Add framework services.
             services.AddEmail(options =>
@@ -81,6 +102,25 @@ namespace AspNetCore.WebApi.EmailApi
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseStaticFiles();
+
+            app.Use(async (context, next) =>
+            {
+                //TODO: 因为微软的Cors 没用明白，这里补充，但不规范，这里先放开不影响开发，但后续应该去掉
+                if (!context.Response.Headers.ContainsKey("Access-Control-Allow-Origin"))
+                    context.Response.Headers.Add("Access-Control-Allow-Origin", new Microsoft.Extensions.Primitives.StringValues("*"));
+                if (!context.Response.Headers.ContainsKey("Access-Control-Allow-Headers"))
+                    context.Response.Headers.Add("Access-Control-Allow-Headers", new Microsoft.Extensions.Primitives.StringValues(new string[] { "accept", "authorization", "content-type" }));
+                if (!context.Response.Headers.ContainsKey("Access-Control-Request-Method"))
+                    context.Response.Headers.Add("Access-Control-Allow-Methods", new[] { "GET, POST, PUT, DELETE, OPTIONS" });
+                //if (!context.Response.Headers.ContainsKey("Access-Control-Request-Method"))
+                //{
+                //    context.Response.Headers.Add("Access-Control-Request-Method", new Microsoft.Extensions.Primitives.StringValues("*"));
+                //}
+                await next();
+            });
+            app.UseCors("AllowAllOrigins");
 
             app.UseMvc();
 
