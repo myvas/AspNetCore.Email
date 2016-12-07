@@ -136,4 +136,5 @@ App_Data/
 bower_components/
 node_modules/
 *launchSettings.json
+**/wwwroot/lib
 
