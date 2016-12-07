@@ -5,11 +5,12 @@
     "Microsoft.AspNetCore.Http.Abstractions": "1.2.0-preview1-22821",
     "Microsoft.Extensions.Options": "1.2.0-preview1-22821",
     "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-    "System.Reflection.TypeExtensions": "4.3.0"
+    "System.Reflection.TypeExtensions": "4.3.0",
+    "MailKit": "1.10.1"
   },
 
   "frameworks": {
-    "net461": {
-    }
+    "netstandard1.6": {},
+    "net461": {}
   }
 }

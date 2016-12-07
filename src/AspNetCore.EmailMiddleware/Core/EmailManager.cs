@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using MailKit.Net.Smtp;
+using Microsoft.Extensions.Options;
+using MimeKit;
+using MimeKit.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace AspNetCore.EmailMiddleware.Services
@@ -19,7 +21,7 @@ namespace AspNetCore.EmailMiddleware.Services
             {
                 throw new ArgumentException(nameof(options.SmtpServerAddress));
             }
-            if(string.IsNullOrWhiteSpace(options.SenderAccount))
+            if (string.IsNullOrWhiteSpace(options.SenderAccount))
             {
                 throw new ArgumentException(nameof(options.SenderAccount));
             }
@@ -29,58 +31,23 @@ namespace AspNetCore.EmailMiddleware.Services
 
         public async Task SendAsync(EmailDto input)
         {
-            string senderAccount = Options.SenderAccount;
+            string senderEmail = Options.SenderAccount;
             string senderPassword = Options.SenderPassword;
             string senderDisplayName = Options.SenderDisplayName;
-            MailMessage msg = new MailMessage();
-
-            msg.From = new MailAddress(senderAccount);
-            msg.Subject = input.Subject;
-            msg.Body = input.Body;
-            msg.IsBodyHtml = input.IsBodyHtml;
-
-            string[] recipients = input.Recipients.Split(',');
-            foreach (string recipient in recipients)
-            {
-                try
-                {
-                    msg.To.Add(new MailAddress(recipient.Trim()));
-                }
-                catch { }
-            }
-
-            if (!string.IsNullOrWhiteSpace(input.Cc))
-            {
-                string[] ccRecipients = input.Cc.Split(',');
-                foreach (string cc in ccRecipients)
-                {
-                    try
-                    {
-                        msg.CC.Add(new MailAddress(cc.Trim()));
-                    }
-                    catch { }
-                }
-            }
+            var msg = new MimeMessage();
             
-            if (!string.IsNullOrWhiteSpace(input.ReplyTo))
-            {
-                try
-                {
-                    msg.ReplyToList.Add(new MailAddress(input.ReplyTo));
-                }
-                catch { }
-            }
+            msg.From.Add(ParseInternetAddresses(senderEmail)[0]);
+            msg.Subject = input.Subject;
+            msg.Body = new TextPart(input.IsBodyHtml ? TextFormat.Html : TextFormat.Plain) { Text = input.Body };
 
-            using (SmtpClient client = new SmtpClient(Options.SmtpServerAddress))
-            {
-                client.Port = 25;
-                client.EnableSsl = false;
+            msg.To.AddRange(ParseInternetAddresses(input.Recipients));
+            msg.Cc.AddRange(ParseInternetAddresses(input.Cc));
+            msg.ReplyTo.AddRange(ParseInternetAddresses(input.ReplyTo));
 
-                client.UseDefaultCredentials = false;
-                NetworkCredential cred = new NetworkCredential(senderAccount, senderPassword);
-                client.Credentials = cred;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            using (var client = new SmtpClient())
+            {
+                client.Connect(Options.SmtpServerAddress, Options.SmtpServerPort, Options.EnableSsl);
+                client.Authenticate(senderEmail, senderPassword);
 
                 try
                 {
@@ -90,8 +57,31 @@ namespace AspNetCore.EmailMiddleware.Services
                 {
                     throw ex;
                 }
+                finally
+                {
+                    //client.Disconnect(true);
+                }
             }
             await Task.FromResult(0);
+        }
+
+        private static List<InternetAddress> ParseInternetAddresses(string internetAddresses)
+        {
+            var result = new List<InternetAddress>();
+
+            if (!string.IsNullOrWhiteSpace(internetAddresses))
+            {
+                foreach (var mailAddress in internetAddresses.Split(';'))
+                {
+                    var s = mailAddress.Trim();
+                    InternetAddress resultItem;
+                    if (InternetAddress.TryParse(s, out resultItem))
+                    {
+                        result.Add(resultItem);
+                    }
+                }
+            }
+            return result;
         }
     }
 }
