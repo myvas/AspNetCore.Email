@@ -39,7 +39,7 @@ namespace AspNetCore.EmailMiddleware.Services
             msg.Body = input.Body;
             msg.IsBodyHtml = input.IsBodyHtml;
 
-            string[] recipients = input.Recipients.Split(',');
+            string[] recipients = input.Recipients.Split(';');
             foreach (string recipient in recipients)
             {
                 try
@@ -51,7 +51,7 @@ namespace AspNetCore.EmailMiddleware.Services
 
             if (!string.IsNullOrWhiteSpace(input.Cc))
             {
-                string[] ccRecipients = input.Cc.Split(',');
+                string[] ccRecipients = input.Cc.Split(';');
                 foreach (string cc in ccRecipients)
                 {
                     try
