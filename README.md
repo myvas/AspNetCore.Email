@@ -21,10 +21,11 @@ app.UseEmail(options=>{...});
 * For A Web Client Project:
 
 
-POST api/v1/email/send
+POST api/v1/Email
 
 
 {
+  "recipients": "1@test.com;2@test.com",
 
   "subject": "来自WebApi的测试邮件",
   
