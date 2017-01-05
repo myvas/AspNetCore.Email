@@ -12,5 +12,20 @@
   "frameworks": {
     "netstandard1.6": {},
     "net461": {}
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "nowarn": []
+  },
+
+  "packOptions": {
+    "files": [ "*.nuspec" ],
+    "tags": [ "aspnetcore", "middleware", "email" ],
+    "summary": "A middleware to send email built for AspNetCore (Works on both Linux and Windows)",
+    "repository": {
+      "type": "git",
+      "url": "http://github.com/huangxiangyao/AspNetCore.EmailMiddleware"
+    },
+    "licenseUrl": "https://github.com/huangxiangyao/AspNetCore.EmailMiddleware/blob/master/LICENSE"
   }
 }
