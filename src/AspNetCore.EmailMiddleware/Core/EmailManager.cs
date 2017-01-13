@@ -29,13 +29,23 @@ namespace AspNetCore.EmailMiddleware.Services
             Options = options;
         }
 
+        public async Task SendAsync(string recipients, string subject, string body)
+        {
+            await SendAsync(new EmailDto()
+            {
+                Recipients = recipients,
+                Subject = subject,
+                Body = body
+            });
+        }
+
         public async Task SendAsync(EmailDto input)
         {
             string senderEmail = Options.SenderAccount;
             string senderPassword = Options.SenderPassword;
             string senderDisplayName = Options.SenderDisplayName;
             var msg = new MimeMessage();
-            
+
             msg.From.Add(ParseInternetAddresses(senderEmail)[0]);
             msg.Subject = input.Subject;
             msg.Body = new TextPart(input.IsBodyHtml ? TextFormat.Html : TextFormat.Plain) { Text = input.Body };

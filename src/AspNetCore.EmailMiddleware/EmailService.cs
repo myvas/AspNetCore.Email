@@ -15,9 +15,14 @@ namespace AspNetCore.EmailMiddleware.Services
             _emailManager = new EmailManager(optionsAccessor.Value);
         }
 
+        public async Task SendEmailAsync(string recipients, string subject, string body)
+        {
+            await _emailManager.SendAsync(recipients, subject, body);
+        }
+
         public async Task SendEmailAsync(EmailDto input)
         {
-            await _emailManager.SendAsync(input);
+            await _emailManager.SendAsync(input.Recipients, input.Subject, input.Body);
         }
     }
 }

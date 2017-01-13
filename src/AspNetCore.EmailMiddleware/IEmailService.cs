@@ -7,6 +7,7 @@ namespace AspNetCore.EmailMiddleware.Services
 {
     public interface IEmailSender
     {
-        Task SendEmailAsync(EmailDto dto);
+        Task SendEmailAsync(string recipient, string subject, string body);
+        Task SendEmailAsync(EmailDto input);
     }
 }
