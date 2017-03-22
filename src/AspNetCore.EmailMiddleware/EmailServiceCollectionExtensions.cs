@@ -15,24 +15,36 @@ namespace AspNetCore.EmailMiddleware
         /// <summary>
         /// Using Email Middleware
         /// </summary>
-        /// <param name="builder">The <see cref="IApplicationBuilder"/> passed to the configuration method</param>
-        /// <param name="setupAction">Middleware configuration options</param>
-        /// <returns>The updated <see cref="IApplicationBuilder"/></returns>
+        /// <param name="services">The <see cref="IServiceCollection"/> passed to the configuration method.</param>
+        /// <param name="setupAction">The middleware configuration options.</param>
+        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddEmail(this IServiceCollection services, Action<EmailOptions> setupAction)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
             }
-            if (setupAction == null)
+
+            if (setupAction != null)
             {
-                throw new ArgumentNullException(nameof(setupAction));
+                services.Configure(setupAction);
             }
 
-            services.Configure(setupAction);
             services.TryAddSingleton<IEmailSender, EmailService>();
 
             return services;
         }
+
+        /// <summary>
+        /// Using Email Middleware
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> passed to the configuration method.</param>
+        /// <param name="setupAction">The middleware configuration options.</param>
+        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
+        public static IServiceCollection AddEmail(this IServiceCollection services)
+        {
+            return services.AddEmail(setupAction: null);
+        }
+
     }
 }
