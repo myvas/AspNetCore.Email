@@ -8,17 +8,17 @@ AspNetCore.Email
 What is this?
 ----------------
 
-A Middleware and a WebApi to send Email built on latest AspNetCore (It works on Windows, and Linux!)
+An AspNetCore Email service and a WebApi to send Email. (It works on Windows, and Linux!)
 
 How to Use
 ----------------
-* For Another AspNetCore Project:
+* For Web App:
 
 
 app.UseEmail(options=>{...});
 
 
-* For A Web Client Project:
+* For Web App (as A WebApi comsumer):
 
 
 POST api/v1/Email
@@ -38,6 +38,6 @@ POST api/v1/Email
 How to Build
 ----------------
 
-Use Visual Studio 2015 with Update 3 and .NET Core 1.1 installed.
+Use Visual Studio 2017 and .NET Core 1.1 installed.
 
 Download from Microsoft's official website: http://asp.net
