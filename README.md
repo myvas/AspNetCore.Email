@@ -1,5 +1,5 @@
 
-AspNetCore.EmailMiddleware
+AspNetCore.Email
 =====================
 
 [![Travis build status](https://img.shields.io/travis/huangxiangyao/AspNetCore.EmailMiddleware.svg?label=travis-ci&style=flat-square&branch=master)](https://travis-ci.org/huangxiangyao/AspNetCore.EmailMiddleware)
@@ -8,7 +8,7 @@ AspNetCore.EmailMiddleware
 What is this?
 ----------------
 
-A Middleware and a WebApi to send Email built on latest AspNetCore (It works on Windows, but NOT Linux yet!)
+A Middleware and a WebApi to send Email built on latest AspNetCore (It works on Windows, and Linux!)
 
 How to Use
 ----------------

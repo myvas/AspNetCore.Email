@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40E3-90BD-3F96AFFA7D92}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		CONTRIBUTING.md = CONTRIBUTING.md
-		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -18,19 +17,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{51B5AC96-CD2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1CF3516D-0591-4945-A10E-33201B8802B2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{4A33C2F4-E439-4134-8172-FA3B67CD2E2E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.EmailMiddleware", "src\AspNetCore.EmailMiddleware\AspNetCore.EmailMiddleware.xproj", "{3CCD1DAC-DEE4-4CC4-B696-CB0C4D0A4EDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi", "samples\AspNetCore.EmailApi\AspNetCore.EmailApi.csproj", "{F9850F08-132E-4E93-A863-127CF923E7D2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.EmailApi", "samples\AspNetCore.EmailApi\AspNetCore.EmailApi.xproj", "{F9850F08-132E-4E93-A863-127CF923E7D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Email.Tests", "test\AspNetCore.EmailMiddleware.Tests\AspNetCore.Email.Tests.csproj", "{C9503D8A-7493-49C2-9AB7-C972D06F90B5}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.EmailMiddleware.Tests", "test\AspNetCore.EmailMiddleware.Tests\AspNetCore.EmailMiddleware.Tests.xproj", "{C9503D8A-7493-49C2-9AB7-C972D06F90B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi.HttpClient", "samples\AspNetCore.EmailApi.HttpClient\AspNetCore.EmailApi.HttpClient.csproj", "{7F2359C6-6F1A-4BAF-9B9F-07F7B11D5317}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.EmailApi.HttpClient", "samples\AspNetCore.EmailApi.HttpClient\AspNetCore.EmailApi.HttpClient.xproj", "{7F2359C6-6F1A-4BAF-9B9F-07F7B11D5317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi.WebApp", "samples\AspNetCore.EmailApi.WebApp\AspNetCore.EmailApi.WebApp.csproj", "{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.EmailApi.WebApp", "samples\AspNetCore.EmailApi.WebApp\AspNetCore.EmailApi.WebApp.xproj", "{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Email", "src\AspNetCore.Email\AspNetCore.Email.csproj", "{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3CCD1DAC-DEE4-4CC4-B696-CB0C4D0A4EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CCD1DAC-DEE4-4CC4-B696-CB0C4D0A4EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CCD1DAC-DEE4-4CC4-B696-CB0C4D0A4EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CCD1DAC-DEE4-4CC4-B696-CB0C4D0A4EDC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9850F08-132E-4E93-A863-127CF923E7D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9850F08-132E-4E93-A863-127CF923E7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9850F08-132E-4E93-A863-127CF923E7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,15 +51,19 @@ Global
 		{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3CCD1DAC-DEE4-4CC4-B696-CB0C4D0A4EDC} = {51B5AC96-CD24-4342-B808-F3C2785AEAB5}
 		{F9850F08-132E-4E93-A863-127CF923E7D2} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{C9503D8A-7493-49C2-9AB7-C972D06F90B5} = {1CF3516D-0591-4945-A10E-33201B8802B2}
 		{7F2359C6-6F1A-4BAF-9B9F-07F7B11D5317} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
+		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD} = {51B5AC96-CD24-4342-B808-F3C2785AEAB5}
 	EndGlobalSection
 EndGlobal
