@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Options;
+﻿using AspNetCore.EmailMiddleware.Services;
 using Microsoft.Extensions.DependencyInjection;
-using AspNetCore.EmailMiddleware.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System;
 
 namespace AspNetCore.EmailMiddleware
 {

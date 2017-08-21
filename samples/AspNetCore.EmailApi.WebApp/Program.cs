@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
 
 namespace AspNetCore.EmailApi.WebApp
 {
@@ -11,14 +12,12 @@ namespace AspNetCore.EmailApi.WebApp
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+            using (var host = WebHost.CreateDefaultBuilder()
                 .UseStartup<Startup>()
-                .Build();
-
-            host.Run();
+                .Build())
+            {
+                host.Run();
+            }
         }
     }
 }

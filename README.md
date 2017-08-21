@@ -25,19 +25,15 @@ POST api/v1/Email
 
 
 {
-
-  "recipients": "1@test.com;2@test.com",
-
-  "subject": "来自WebApi的测试邮件",
-  
+  "recipients": "4848285@qq.com;noreply@test.com",
+  "subject": "来自WebApi的测试邮件",  
   "body": "这是一封来自WebApi的测试邮件，您无须理会此邮件。"
-  
 }
 
 
 How to Build
 ----------------
 
-Use Visual Studio 2017 and .NET Core 1.1 installed.
+Use Visual Studio 2017 Version 15.3 and .NET Core 2.0 installed.
 
 Download from Microsoft's official website: http://asp.net

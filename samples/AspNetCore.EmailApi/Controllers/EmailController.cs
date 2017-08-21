@@ -24,7 +24,7 @@ namespace AspNetCore.WebApi.EmailApi.Controllers
         }
 
         /// <summary>
-        /// Get All Todo Items
+        /// Send an Email.
         /// </summary>
         /// <returns></returns>
         [HttpPost]

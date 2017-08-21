@@ -26,7 +26,7 @@
 </div>
 
 @section Scripts
-{
+    {
     <script type="text/javascript" charset="utf-8">
         (function () {
             $(".send-email").on("click", function (e) {
@@ -44,7 +44,7 @@
                     type: "POST",
                     url: "http://localhost:9002/api/v1/Email",
                     data: JSON.stringify(json),
-                    dataType: "json",
+                    dataType: "html",
                     contentType: "application/json; charset=UTF-8",
                     async: true,
                     cache: false,
