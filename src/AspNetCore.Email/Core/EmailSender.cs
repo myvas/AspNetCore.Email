@@ -4,34 +4,31 @@ using MimeKit;
 using MimeKit.Text;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace AspNetCore.EmailMiddleware.Services
+namespace AspNetCore.Email
 {
-    public class EmailManager
+    public class EmailSender : IEmailSender
     {
-        protected EmailOptions Options;
+        protected readonly EmailOptions _options;
 
-        public EmailManager(EmailOptions options)
+        public EmailSender(IOptions<EmailOptions> optionsAccessor)
         {
-            if (string.IsNullOrWhiteSpace(options.SmtpServerAddress))
-            {
-                throw new ArgumentException(nameof(options.SmtpServerAddress));
-            }
-            if (string.IsNullOrWhiteSpace(options.SenderAccount))
-            {
-                throw new ArgumentException(nameof(options.SenderAccount));
-            }
+            _options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
 
-            Options = options;
+            if (string.IsNullOrWhiteSpace(_options.SmtpServerAddress))
+            {
+                throw new ArgumentException(nameof(_options.SmtpServerAddress));
+            }
+            if (string.IsNullOrWhiteSpace(_options.SenderAccount))
+            {
+                throw new ArgumentException(nameof(_options.SenderAccount));
+            }
         }
 
-        public async Task SendAsync(string recipients, string subject, string body)
+        public virtual async Task SendEmailAsync(string recipients, string subject, string body)
         {
-            await SendAsync(new EmailDto()
+            await SendEmailAsync(new EmailDto()
             {
                 Recipients = recipients,
                 Subject = subject,
@@ -39,11 +36,11 @@ namespace AspNetCore.EmailMiddleware.Services
             });
         }
 
-        public async Task SendAsync(EmailDto input)
+        public virtual async Task SendEmailAsync(EmailDto input)
         {
-            string senderEmail = Options.SenderAccount;
-            string senderPassword = Options.SenderPassword;
-            string senderDisplayName = Options.SenderDisplayName;
+            string senderEmail = _options.SenderAccount;
+            string senderPassword = _options.SenderPassword;
+            string senderDisplayName = _options.SenderDisplayName;
             var msg = new MimeMessage();
 
             msg.From.Add(ParseInternetAddresses(senderEmail)[0]);
@@ -56,7 +53,7 @@ namespace AspNetCore.EmailMiddleware.Services
 
             using (var client = new SmtpClient())
             {
-                client.Connect(Options.SmtpServerAddress, Options.SmtpServerPort, Options.EnableSsl);
+                client.Connect(_options.SmtpServerAddress, _options.SmtpServerPort, _options.EnableSsl);
                 client.Authenticate(senderEmail, senderPassword);
 
                 try
@@ -75,7 +72,7 @@ namespace AspNetCore.EmailMiddleware.Services
             await Task.FromResult(0);
         }
 
-        private static List<InternetAddress> ParseInternetAddresses(string internetAddresses)
+        protected static List<InternetAddress> ParseInternetAddresses(string internetAddresses)
         {
             var result = new List<InternetAddress>();
 

@@ -37,24 +37,11 @@ namespace AspNetCore.WebApi.EmailApi
                 {
                     var env = hostingContext.HostingEnvironment;
 
-                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-
-                    if (env.IsDevelopment())
-                    {
-                        var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
-                        if (appAssembly != null)
-                        {
-                            config.AddUserSecrets(appAssembly, optional: true);
-                        }
-                    }
-
-                    config.AddEnvironmentVariables();
-
-                    if (args != null)
-                    {
-                        config.AddCommandLine(args);
-                    }
+                    config.AddEnvironmentVariables()
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                        .AddUserSecrets<Startup>(true)
+                        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                        .AddCommandLine(args);
                 })
                 .ConfigureLogging((hostingContext, logging) =>
                 {

@@ -1,11 +1,10 @@
-﻿using AspNetCore.EmailMiddleware.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
-namespace AspNetCore.EmailMiddleware
+namespace AspNetCore.Email
 {
-    public static class EmailServiceCollectionExtensions
+    public static class EmailSenderExtensions
     {
         /// <summary>
         /// Using Email Middleware
@@ -25,7 +24,7 @@ namespace AspNetCore.EmailMiddleware
                 services.Configure(setupAction);
             }
 
-            services.TryAddSingleton<IEmailSender, EmailService>();
+            services.TryAddTransient<IEmailSender, EmailSender>();
 
             return services;
         }

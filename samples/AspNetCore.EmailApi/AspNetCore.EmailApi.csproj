@@ -6,7 +6,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>AspNetCore.EmailApi</AssemblyName>
-    <UserSecretsId>aspnet-AspNetCore.EmailApi-20161207120557</UserSecretsId>
+    <UserSecretsId>EmailApi</UserSecretsId>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
   </PropertyGroup>
 
