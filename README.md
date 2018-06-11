@@ -34,6 +34,6 @@ POST api/v1/Email
 How to Build
 ----------------
 
-Use Visual Studio 2017 and .NET Core 2.0 installed.
+Use Visual Studio 2017 v15.7.3 and .NET Core 2.1 installed.
 
 Download from Microsoft's official website: http://asp.net

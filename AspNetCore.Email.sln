@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		CONTRIBUTING.md = CONTRIBUTING.md
+		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -65,5 +66,8 @@ Global
 		{7F2359C6-6F1A-4BAF-9B9F-07F7B11D5317} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD} = {51B5AC96-CD24-4342-B808-F3C2785AEAB5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D2602F5-C8CB-42E2-8DF6-AAB279E814D9}
 	EndGlobalSection
 EndGlobal
