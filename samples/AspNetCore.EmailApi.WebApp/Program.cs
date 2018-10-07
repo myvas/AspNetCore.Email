@@ -12,12 +12,9 @@ namespace AspNetCore.EmailApi.WebApp
     {
         public static void Main(string[] args)
         {
-            using (var host = WebHost.CreateDefaultBuilder()
-                .UseStartup<Startup>()
-                .Build())
-            {
-                host.Run();
-            }
+            CreateWebHostBuilder(args).Build().Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost.CreateDefaultBuilder().UseStartup<Startup>();
     }
 }

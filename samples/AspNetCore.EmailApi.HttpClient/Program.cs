@@ -11,6 +11,12 @@ namespace AspNetCore.EmailApi.WebClient
 {
     public class Program
     {
+        static Program()
+        {
+            // Console output in Chinese
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+
         public static void Main(string[] args)
         {
             RunAsync().Wait();

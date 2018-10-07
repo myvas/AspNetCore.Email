@@ -5,6 +5,7 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>AspNetCore.EmailApi.WebApp</AssemblyName>
     <OutputType>Exe</OutputType>
+    <UserSecretsId>f9197f52-ee44-44b1-bc42-6aa475fb7b7e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

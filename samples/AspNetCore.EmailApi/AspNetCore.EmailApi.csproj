@@ -2,14 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>AspNetCore.EmailApi</AssemblyName>
-    <UserSecretsId>EmailApi</UserSecretsId>
-    <OutputType>Exe</OutputType>
-    <ApplicationIcon />
-    <StartupObject />
+    <UserSecretsId>AspNetCore.EmailApi</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

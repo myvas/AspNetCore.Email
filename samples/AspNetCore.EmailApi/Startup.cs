@@ -47,10 +47,10 @@ namespace AspNetCore.WebApi.EmailApi
             // Add framework services.
             services.AddEmail(options =>
             {
-                options.SmtpServerAddress = Configuration["SmtpServerAddress"];
-                options.SenderAccount = Configuration["SenderAccount"];
-                options.SenderPassword = Configuration["SenderPassword"];
-                options.SenderDisplayName = Configuration["SenderDisplayName"];
+                options.SmtpServerAddress = Configuration["Email:SmtpServerAddress"];
+                options.SenderAccount = Configuration["Email:SenderAccount"];
+                options.SenderPassword = Configuration["Email:SenderPassword"];
+                options.SenderDisplayName = Configuration["Email:SenderDisplayName"];
             });
 
             // Add the detail information for the API.

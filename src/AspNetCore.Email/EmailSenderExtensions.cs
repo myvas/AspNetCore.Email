@@ -12,7 +12,7 @@ namespace AspNetCore.Email
         /// <param name="services">The <see cref="IServiceCollection"/> passed to the configuration method.</param>
         /// <param name="setupAction">The middleware configuration options.</param>
         /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddEmail(this IServiceCollection services, Action<EmailOptions> setupAction)
+        public static IServiceCollection AddEmail(this IServiceCollection services, Action<EmailOptions> setupAction = null)
         {
             if (services == null)
             {
@@ -21,24 +21,12 @@ namespace AspNetCore.Email
 
             if (setupAction != null)
             {
-                services.Configure(setupAction);
+                services.Configure(setupAction); //IOptions<EmailOptions>
             }
 
             services.TryAddTransient<IEmailSender, EmailSender>();
 
             return services;
         }
-
-        /// <summary>
-        /// Using Email Middleware
-        /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection"/> passed to the configuration method.</param>
-        /// <param name="setupAction">The middleware configuration options.</param>
-        /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddEmail(this IServiceCollection services)
-        {
-            return services.AddEmail(setupAction: null);
-        }
-
     }
 }

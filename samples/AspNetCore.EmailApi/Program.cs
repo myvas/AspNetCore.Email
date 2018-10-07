@@ -4,33 +4,26 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace AspNetCore.WebApi.EmailApi
 {
     public class Program
     {
-        public static void Main(string[] args)
+        static Program()
         {
-            var host = BuildWebHost(args);
-
-            host.Run();
+            // Console output in Chinese
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
-        public static IWebHost BuildWebHost(string[] args)
+        public static void Main(string[] args)
         {
-            return CreateWebHostBuilder(args)
-                .Build();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            var hostingConfiguration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("hosting.json", optional: true, reloadOnChange: true)
-                .Build();
-
             var builder = new WebHostBuilder()
-                .UseConfiguration(hostingConfiguration)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((hostingContext, config) =>

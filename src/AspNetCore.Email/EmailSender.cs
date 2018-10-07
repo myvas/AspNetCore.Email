@@ -4,6 +4,7 @@ using MimeKit;
 using MimeKit.Text;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace AspNetCore.Email
@@ -15,20 +16,12 @@ namespace AspNetCore.Email
         public EmailSender(IOptions<EmailOptions> optionsAccessor)
         {
             _options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
-
-            if (string.IsNullOrWhiteSpace(_options.SmtpServerAddress))
-            {
-                throw new ArgumentException(nameof(_options.SmtpServerAddress));
-            }
-            if (string.IsNullOrWhiteSpace(_options.SenderAccount))
-            {
-                throw new ArgumentException(nameof(_options.SenderAccount));
-            }
+            _options.Validate();
         }
 
-        public virtual async Task SendEmailAsync(string recipients, string subject, string body)
+        public virtual async Task<bool> SendEmailAsync(string recipients, string subject, string body)
         {
-            await SendEmailAsync(new EmailDto()
+            return await SendEmailAsync(new EmailDto()
             {
                 Recipients = recipients,
                 Subject = subject,
@@ -36,8 +29,10 @@ namespace AspNetCore.Email
             });
         }
 
-        public virtual async Task SendEmailAsync(EmailDto input)
+        public virtual async Task<bool> SendEmailAsync(EmailDto input)
         {
+            await Task.FromResult(0);
+
             string senderEmail = _options.SenderAccount;
             string senderPassword = _options.SenderPassword;
             string senderDisplayName = _options.SenderDisplayName;
@@ -53,23 +48,26 @@ namespace AspNetCore.Email
 
             using (var client = new SmtpClient())
             {
-                client.Connect(_options.SmtpServerAddress, _options.SmtpServerPort, _options.EnableSsl);
-                client.Authenticate(senderEmail, senderPassword);
-
                 try
                 {
+                    // Accept all SSL certificates (in case the server supports STARTTLS)
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                    client.Connect(_options.SmtpServerAddress, _options.SmtpServerPort, _options.EnableSsl);
+                    client.Authenticate(senderEmail, senderPassword);
+
                     client.Send(msg);
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    Debug.WriteLine(ex);
+                    return false;
                 }
                 finally
                 {
-                    //client.Disconnect(true);
+                    client.Disconnect(true);
                 }
             }
-            await Task.FromResult(0);
+            return true;
         }
 
         protected static List<InternetAddress> ParseInternetAddresses(string internetAddresses)

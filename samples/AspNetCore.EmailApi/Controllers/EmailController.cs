@@ -1,5 +1,6 @@
 ﻿using AspNetCore.Email;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace AspNetCore.WebApi.EmailApi.Controllers
 {
     /// <summary>
-    /// 发送邮件
+    /// Email
     /// </summary>
     [Route("api/v1/[controller]")]
     public class EmailController : Controller
@@ -16,7 +17,7 @@ namespace AspNetCore.WebApi.EmailApi.Controllers
 
         public EmailController(IEmailSender emailSender)
         {
-            _emailSender = emailSender;
+            _emailSender = emailSender ?? throw new ArgumentNullException(nameof(emailSender));
         }
 
         /// <summary>
@@ -24,9 +25,10 @@ namespace AspNetCore.WebApi.EmailApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task SendAsync([FromBody]EmailDto input)
+        public async Task<IActionResult> SendAsync([FromBody]EmailDto input)
         {
-            await _emailSender.SendEmailAsync(input);
+            var result = await _emailSender.SendEmailAsync(input);
+            return Json(result);
         }
     }
 }
