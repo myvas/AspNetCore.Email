@@ -34,7 +34,7 @@ POST api/v1/Email
 }
 ```
 
-How to Build
+## How to Build
 
 Use Visual Studio 2017 v15.8.2+ and .NET Core SDK v2.1.403+ installed.
 
