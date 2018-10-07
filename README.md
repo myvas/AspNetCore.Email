@@ -9,9 +9,18 @@
 An AspNetCore service to send Email. (It works on Windows, and Linux!)
 
 ## How to Use
+### Nuget
+https://www.nuget.org/packages/AspNetCore.Email
+
 ### Web App:
 ```csharp
-app.UseEmail(options=>{...});
+services.AddEmail(options =>
+{
+    options.SmtpServerAddress = Configuration["Email:SmtpServerAddress"];
+    options.SenderAccount = Configuration["Email:SenderAccount"];
+    options.SenderPassword = Configuration["Email:SenderPassword"];
+    options.SenderDisplayName = Configuration["Email:SenderDisplayName"];
+});
 ```
 
 ### Web Api:
