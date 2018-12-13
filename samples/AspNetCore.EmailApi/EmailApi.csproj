@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Myvas.AspNetCore.EmailApi</AssemblyName>
+    <UserSecretsId>Myvas.AspNetCore.EmailApi</UserSecretsId>
+    <RootNamespace>Myvas.AspNetCore.EmailApi</RootNamespace>
+    <Authors>Myvas</Authors>
+    <Product>Myvas.AspNetCore.Email</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj" />
+  </ItemGroup>
+
+</Project>

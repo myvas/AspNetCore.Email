@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.IO;
-using System.Reflection;
 using System.Text;
 
-namespace AspNetCore.WebApi.EmailApi
+namespace Myvas.AspNetCore.WebApi.EmailApi
 {
     public class Program
     {

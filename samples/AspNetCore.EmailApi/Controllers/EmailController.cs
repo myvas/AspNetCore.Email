@@ -1,11 +1,11 @@
-﻿using AspNetCore.Email;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Myvas.AspNetCore.Email;
 using System;
 using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace AspNetCore.WebApi.EmailApi.Controllers
+namespace Myvas.AspNetCore.WebApi.EmailApi.Controllers
 {
     /// <summary>
     /// Email

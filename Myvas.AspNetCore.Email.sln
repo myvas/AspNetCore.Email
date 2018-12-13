@@ -16,11 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{51B5AC96-CD2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi", "samples\AspNetCore.EmailApi\AspNetCore.EmailApi.csproj", "{F9850F08-132E-4E93-A863-127CF923E7D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi", "samples\AspNetCore.EmailApi\EmailApi.csproj", "{F9850F08-132E-4E93-A863-127CF923E7D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi.HttpClient", "samples\AspNetCore.EmailApi.HttpClient\AspNetCore.EmailApi.HttpClient.csproj", "{7F2359C6-6F1A-4BAF-9B9F-07F7B11D5317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClient", "samples\AspNetCore.EmailApi.HttpClient\HttpClient.csproj", "{7F2359C6-6F1A-4BAF-9B9F-07F7B11D5317}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi.WebApp", "samples\AspNetCore.EmailApi.WebApp\AspNetCore.EmailApi.WebApp.csproj", "{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "samples\AspNetCore.EmailApi.WebApp\WebApp.csproj", "{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Myvas.AspNetCore.Email", "src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj", "{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}"
 EndProject

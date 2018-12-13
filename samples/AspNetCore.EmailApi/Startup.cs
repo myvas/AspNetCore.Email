@@ -1,15 +1,15 @@
-﻿using AspNetCore.Email;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Myvas.AspNetCore.Email;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
 using System.Linq;
 
-namespace AspNetCore.WebApi.EmailApi
+namespace Myvas.AspNetCore.WebApi.EmailApi
 {
     public class Startup
     {
