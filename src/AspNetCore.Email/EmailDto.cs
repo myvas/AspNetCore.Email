@@ -1,4 +1,4 @@
-﻿namespace AspNetCore.Email
+﻿namespace Myvas.AspNetCore.Email
 {
     /// <summary>
     /// The DTO used for WebApi

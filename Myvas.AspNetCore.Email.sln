@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
-		CONTRIBUTING.md = CONTRIBUTING.md
-		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -24,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi.HttpCli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.EmailApi.WebApp", "samples\AspNetCore.EmailApi.WebApp\AspNetCore.EmailApi.WebApp.csproj", "{7D891BB2-6A7F-4BF9-999C-D2C701BE93B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Email", "src\AspNetCore.Email\AspNetCore.Email.csproj", "{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Myvas.AspNetCore.Email", "src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj", "{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

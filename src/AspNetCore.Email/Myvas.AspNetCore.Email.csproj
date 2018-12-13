@@ -1,22 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>2.1.403</Version>
+    <Version>2.1.600</Version>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>AspNetCore.Email</AssemblyName>
-    <PackageId>AspNetCore.Email</PackageId>
-    <PackageTags>AspNetCore;IEmailSender</PackageTags>
-    <PackageLicenseUrl></PackageLicenseUrl>
-    <RepositoryType></RepositoryType>
-    <RepositoryUrl></RepositoryUrl>
+    <AssemblyName>Myvas.AspNetCore.Email</AssemblyName>
+    <PackageId>Myvas.AspNetCore.Email</PackageId>
+    <PackageTags>AspNetCore IEmailSender MailKit</PackageTags>
     <PackageProjectUrl>https://github.com/myvas/AspNetCore.Email</PackageProjectUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <RootNamespace>AspNetCore.Email</RootNamespace>
-    <Authors>AspNetCore</Authors>
-    <Description>IEmailSender implementation via MailKit. (It works on Windows, and Linux!)</Description>
+    <RootNamespace>Myvas.AspNetCore.Email</RootNamespace>
+    <Authors>Myvas</Authors>
+    <Description>An AspNetCore service to send Email via MailKit. (Windows and Linux works!)</Description>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>

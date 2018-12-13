@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AspNetCore.Email
+namespace Myvas.AspNetCore.Email
 {
     public class EmailOptions
     {

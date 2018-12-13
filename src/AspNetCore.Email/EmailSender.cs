@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace AspNetCore.Email
+namespace Myvas.AspNetCore.Email
 {
     public class EmailSender : IEmailSender
     {

@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AspNetCore.Email\AspNetCore.Email.csproj" />
+    <ProjectReference Include="..\..\src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj" />
   </ItemGroup>
 
 </Project>

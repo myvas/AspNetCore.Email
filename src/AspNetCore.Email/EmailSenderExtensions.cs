@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
-namespace AspNetCore.Email
+namespace Myvas.AspNetCore.Email
 {
     public static class EmailSenderExtensions
     {

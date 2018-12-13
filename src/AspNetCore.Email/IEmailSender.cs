@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace AspNetCore.Email
+namespace Myvas.AspNetCore.Email
 {
     public interface IEmailSender
     {
