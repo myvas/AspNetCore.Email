@@ -25,6 +25,7 @@ namespace Myvas.AspNetCore.Email
             }
 
             services.TryAddTransient<IEmailSender, EmailSender>();
+            services.TryAddTransient<EmailSender>();
 
             return services;
         }
