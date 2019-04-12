@@ -29,7 +29,7 @@ services.AddEmail(options =>
 });
 ```
 
-### Use Case 1: Use Myvas.AspNetCore.Email.IEmailSender without 'Microsoft.AspNetCore.Identity.UI'
+### Use Case 1: Use Myvas.AspNetCore.Email.IEmailSender (without 'Microsoft.AspNetCore.Identity.UI')
 ```csharp
 using Myvas.AspNetCore.Email;
 
