@@ -19,15 +19,19 @@ namespace Myvas.AspNetCore.Email
             _options.Validate();
         }
 
-        public virtual async Task<bool> SendEmailAsync(string recipients, string subject, string body)
+        public virtual async Task<bool> SendEmailAsync(string recipients, string subject, string htmlBody) => await SendEmailHtmlAsync(recipients, subject, htmlBody);
+
+        public virtual async Task<bool> SendEmailHtmlAsync(string recipients, string subject, string htmlBody) => await SendEmailAsync(recipients, subject, htmlBody, true);
+
+        public virtual async Task<bool> SendEmailPlainAsync(string recipients, string subject, string plainBody) => await SendEmailAsync(recipients, subject, plainBody, false);
+
+        public virtual async Task<bool> SendEmailAsync(string recipients, string subject, string plainBody, bool isBodyHtml) => await SendEmailAsync(new EmailDto()
         {
-            return await SendEmailAsync(new EmailDto()
-            {
-                Recipients = recipients,
-                Subject = subject,
-                Body = body
-            });
-        }
+            Recipients = recipients,
+            Subject = subject,
+            Body = plainBody,
+            IsBodyHtml = isBodyHtml
+        });
 
         public virtual async Task<bool> SendEmailAsync(EmailDto input)
         {
