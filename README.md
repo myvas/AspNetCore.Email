@@ -31,6 +31,8 @@ services.AddEmail(options =>
 
 ### Use Case 1: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
 ```csharp
+using Myvas.AspNetCore.Email;
+
 public class EmailService : Microsoft.AspNetCore.Identity.UI.Services.IEmailSender
 {
     private readonly EmailSender _emailSender;
@@ -48,7 +50,7 @@ public class EmailService : Microsoft.AspNetCore.Identity.UI.Services.IEmailSend
 ```
 
 ### Use Case 2: Use Myvas.AspNetCore.Email.IEmailSender without 'Microsoft.AspNetCore.Identity.UI'
-```
+```csharp
 using Myvas.AspNetCore.Email;
 
 public class EmailController : Controller
