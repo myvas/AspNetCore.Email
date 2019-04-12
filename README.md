@@ -9,7 +9,16 @@ An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 ### Nuget
 https://www.nuget.org/packages/Myvas.AspNetCore.Email
 
-### Web App:
+### secrets.json or appsettings.xxx.json
+```
+  "Email:SmtpServerSsl": "true",
+  "Email:SmtpServerPort": "465",
+  "Email:SmtpServerAddress": "smtp.myvas.com",
+  "Email:SenderPassword": "yY_myvas.com_idc",
+  "Email:SenderDisplayName": "DO-NOT-REPLY",
+  "Email:SenderAccount": "noreply@myvas.com",
+```
+### ConfigureServices:
 ```csharp
 services.AddEmail(options =>
 {
@@ -20,8 +29,48 @@ services.AddEmail(options =>
 });
 ```
 
-### Web Api:
+### Use Case 1: Use Myvas.AspNetCore.Email.IEmailSender (without 'Microsoft.AspNetCore.Identity.UI')
+```csharp
+using Myvas.AspNetCore.Email;
 
+public class EmailController : Controller
+{
+    private readonly IEmailSender _emailSender;
+
+    public EmailController(
+        IEmailSender emailSender)
+    {
+        _emailSender = emailSender ?? throw new ArgumentNullException(nameof(emailSender));
+    }
+```
+
+### Use Case 2: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
+Use Case 2 Step 1: EmailService
+```csharp
+using Myvas.AspNetCore.Email;
+
+public class EmailService : Microsoft.AspNetCore.Identity.UI.Services.IEmailSender
+{
+    private readonly EmailSender _emailSender;
+
+    public EmailService(EmailSender emailSender)
+    {
+        _emailSender = emailSender;
+    }
+
+    public Task SendEmailAsync(string email, string subject, string htmlMessage)
+    {
+        return _emailSender.SendEmailAsync(email, subject, htmlMessage);
+    }
+}
+```
+
+Use Case 2 Step 2: ConfigureServices
+```csharp
+services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailService>();
+```
+
+### WebApiDemo
 POST api/v1/Email
 ```
 {
@@ -31,8 +80,6 @@ POST api/v1/Email
 }
 ```
 
-## How to Build
-
-Visual Studio 2017 and .NET Core SDK 2.1
-
-Download from Microsoft's official website: http://asp.net
+## Next...
+* Email templates
+* Razor Class Library for Configuration and Management
