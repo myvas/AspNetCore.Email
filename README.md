@@ -29,7 +29,23 @@ services.AddEmail(options =>
 });
 ```
 
-### Use Case 1: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
+### Use Case 1: Use Myvas.AspNetCore.Email.IEmailSender without 'Microsoft.AspNetCore.Identity.UI'
+```csharp
+using Myvas.AspNetCore.Email;
+
+public class EmailController : Controller
+{
+    private readonly IEmailSender _emailSender;
+
+    public EmailController(
+        IEmailSender emailSender)
+    {
+        _emailSender = emailSender ?? throw new ArgumentNullException(nameof(emailSender));
+    }
+```
+
+### Use Case 2: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
+Use Case 2 Step 1: EmailService
 ```csharp
 using Myvas.AspNetCore.Email;
 
@@ -49,19 +65,9 @@ public class EmailService : Microsoft.AspNetCore.Identity.UI.Services.IEmailSend
 }
 ```
 
-### Use Case 2: Use Myvas.AspNetCore.Email.IEmailSender without 'Microsoft.AspNetCore.Identity.UI'
+Use Case 2 Step 2: ConfigureServices
 ```csharp
-using Myvas.AspNetCore.Email;
-
-public class EmailController : Controller
-{
-    private readonly IEmailSender _emailSender;
-
-    public EmailController(
-        IEmailSender emailSender)
-    {
-        _emailSender = emailSender ?? throw new ArgumentNullException(nameof(emailSender));
-    }
+services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailService>();
 ```
 
 ### WebApiDemo
