@@ -14,7 +14,7 @@ https://www.nuget.org/packages/Myvas.AspNetCore.Email
   "Email:SmtpServerSsl": "true",
   "Email:SmtpServerPort": "465",
   "Email:SmtpServerAddress": "smtp.myvas.com",
-  "Email:SenderPassword": "yY_myvas.com_idc",
+  "Email:SenderPassword": "<your password>",
   "Email:SenderDisplayName": "DO-NOT-REPLY",
   "Email:SenderAccount": "noreply@myvas.com",
 ```
