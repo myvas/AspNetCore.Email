@@ -1,15 +1,12 @@
 
 # Myvas.AspNetCore.Email
 
-## What is this?
-
 An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 
-## How to Use
-### Nuget
+## Nuget
 https://www.nuget.org/packages/Myvas.AspNetCore.Email
 
-### secrets.json or appsettings.xxx.json
+## secrets.json or appsettings.xxx.json
 ```
   "Email:SmtpServerSsl": "true",
   "Email:SmtpServerPort": "465",
@@ -18,7 +15,7 @@ https://www.nuget.org/packages/Myvas.AspNetCore.Email
   "Email:SenderDisplayName": "DO-NOT-REPLY",
   "Email:SenderAccount": "noreply@myvas.com",
 ```
-### ConfigureServices:
+## ConfigureServices:
 ```csharp
 services.AddEmail(options =>
 {
@@ -29,7 +26,7 @@ services.AddEmail(options =>
 });
 ```
 
-### Use Case 1: Use Myvas.AspNetCore.Email.IEmailSender (without 'Microsoft.AspNetCore.Identity.UI')
+## Use Case 1: Use Myvas.AspNetCore.Email.IEmailSender (without 'Microsoft.AspNetCore.Identity.UI')
 ```csharp
 using Myvas.AspNetCore.Email;
 
@@ -44,7 +41,7 @@ public class EmailController : Controller
     }
 ```
 
-### Use Case 2: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
+## Use Case 2: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
 Use Case 2 Step 1: EmailService
 ```csharp
 using Myvas.AspNetCore.Email;
@@ -70,7 +67,7 @@ Use Case 2 Step 2: ConfigureServices
 services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailService>();
 ```
 
-### WebApiDemo
+## WebApiDemo
 POST api/v1/Email
 ```
 {
