@@ -2,11 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Myvas.AspNetCore.EmailApi</AssemblyName>
-    <UserSecretsId>Myvas.AspNetCore.EmailApi</UserSecretsId>
-    <RootNamespace>Myvas.AspNetCore.EmailApi</RootNamespace>
-    <Authors>Myvas</Authors>
-    <Product>Myvas.AspNetCore.Email</Product>
+    <AssemblyName>EmailApi</AssemblyName>
+    <UserSecretsId>EmailApi</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

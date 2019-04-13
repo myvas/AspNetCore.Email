@@ -5,9 +5,9 @@
 <h1>@ViewData["Title"]</h1>
 
 <form>
-    <input id="email-recipient" name="email-recipient" placeholder="Email" type="text" />
-    <textarea id="email-body" name="email-body" placeholder="Content" rows="3"></textarea>
-    <input class="send-email" type="button" value="Send Email" />
+    <input id="recipient" name="recipient" placeholder="Recipient/EmailAddress" type="text" value="noreply@myvas.com" />
+    <textarea id="content" name="content" placeholder="Body/Content" rows="3"></textarea>
+    <input class="sendemail" type="button" value="Send Email" />
 </form>
 
 <div class="result"></div>
@@ -16,9 +16,9 @@
     {
     <script type="text/javascript" charset="utf-8">
         (function () {
-            $(".send-email").on("click", function (e) {
-                var recipient = $("#email-recipient").val();
-                var body = $("#email-body").val();
+            $(".sendemail").on("click", function (e) {
+                var recipient = $("#recipient").val();
+                var body = $("#content").val();
                 var subject = "Test EmailApi";
 
                 var json = {
@@ -36,7 +36,7 @@
                     async: true,
                     cache: false,
                     success: function (result) {
-                        alert("Sent successfully.(" + result + ")");
+                        alert("Send result: " + result );
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert(jqXHR + "-" + textStatus + "-" + errorThrown);
