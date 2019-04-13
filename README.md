@@ -16,7 +16,7 @@ https://www.nuget.org/packages/Myvas.AspNetCore.Email
   "Email:SenderAccount": "noreply@myvas.com",
 ```
 ## ConfigureServices:
-1.IEmailSender, EmailSender
+1.AddEmail: IEmailSender, EmailSender
 ```csharp
 services.AddEmail(options =>
 {
@@ -27,7 +27,7 @@ services.AddEmail(options =>
 });
 ```
 
-2.IEmailTemplate, EmailTemplate
+2.AddEmailTemplate: IEmailTemplate
 ```csharp
 services.AddEmailTemplate(options =>
 {
