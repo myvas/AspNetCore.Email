@@ -43,8 +43,8 @@ namespace Myvas.AspNetCore.Email
             var msg = new MimeMessage();
 
             msg.From.Add(ParseInternetAddresses(senderEmail)[0]);
-            msg.Subject = input.Subject;
-            msg.Body = new TextPart(input.IsBodyHtml ? TextFormat.Html : TextFormat.Plain) { Text = input.Body };
+            msg.Subject = input.Subject ?? "";
+            msg.Body = new TextPart(input.IsBodyHtml ? TextFormat.Html : TextFormat.Plain) { Text = input.Body ?? "" };
 
             msg.To.AddRange(ParseInternetAddresses(input.Recipients));
             msg.Cc.AddRange(ParseInternetAddresses(input.Cc));

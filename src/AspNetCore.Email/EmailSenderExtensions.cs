@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Myvas.AspNetCore.Email;
 using System;
 
-namespace Myvas.AspNetCore.Email
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class EmailSenderExtensions
     {
