@@ -5,14 +5,8 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>WebApp</AssemblyName>
     <OutputType>Exe</OutputType>
-    <UserSecretsId>f9197f52-ee44-44b1-bc42-6aa475fb7b7e</UserSecretsId>
+    <UserSecretsId>EmailWebApp</UserSecretsId>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Update="wwwroot\**\*">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -22,21 +16,4 @@
     <ProjectReference Include="..\..\src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\EmailTemplates\named.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\EmailTemplates\named.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\EmailTemplates\ordered.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\EmailTemplates\ordered.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 </Project>
