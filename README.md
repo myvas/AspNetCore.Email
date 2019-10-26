@@ -4,23 +4,15 @@
 An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 
 ## Samples
-- EmailApi (WebApi)
-
-http://localhost:9002/swagger/index.html
+- EmailApi (WebApi): http://localhost:9002/swagger/index.html
 
 - EmailApi Client (HttpClient)
 
-- EmailApi Client (JavascriptClient)
+- EmailApi Client (JavascriptClient): http://localhost:9006 
 
-http://localhost:9006 
+- EmailApi Client (WebClient/Consumer WebApp): http://localhost:9008
 
-- EmailApi Client (WebClient/Consumer WebApp)
-
-http://localhost:9008
-
-- WebApp (Mvc, A consumer of this middleware)
-
-http://localhost:9009
+- WebApp (Mvc, A consumer of this middleware): http://localhost:9009
 
 ## secrets.json or appsettings.xxx.json
 ```
