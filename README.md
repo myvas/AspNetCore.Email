@@ -6,6 +6,15 @@ An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 ## Samples
 - EmailApi (WebApi): http://localhost:9002/swagger/index.html
 
+POST api/v1/Email
+```
+{
+  "recipients": "4848285@qq.com;noreply@test.com",
+  "subject": "来自WebApi的测试邮件",  
+  "body": "这是一封来自WebApi的测试邮件，您无须理会此邮件。"
+}
+```
+
 - EmailApi Client (Console, HttpClient): dotnet run
 
 - EmailApi Client (JavascriptClient): http://localhost:9006 
@@ -82,16 +91,6 @@ public class EmailService : Microsoft.AspNetCore.Identity.UI.Services.IEmailSend
 Use Case 2 Step 2: ConfigureServices
 ```csharp
 services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailService>();
-```
-
-## WebApiDemo
-POST api/v1/Email
-```
-{
-  "recipients": "4848285@qq.com;noreply@test.com",
-  "subject": "来自WebApi的测试邮件",  
-  "body": "这是一封来自WebApi的测试邮件，您无须理会此邮件。"
-}
 ```
 
 ## Next...
