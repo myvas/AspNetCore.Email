@@ -1,10 +1,26 @@
 
-# Myvas.AspNetCore.Email
+# Myvas.AspNetCore.Email [![NuGet](https://img.shields.io/nuget/v/Myvas.AspNetCore.Email.svg)](https://www.nuget.org/packages/Myvas.AspNetCore.Email) [![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/myvas/AspNetCore.Email?label=github)](https://github.com/myvas/AspNetCore.Email)
 
 An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 
-## Nuget
-https://www.nuget.org/packages/Myvas.AspNetCore.Email
+## Samples
+- EmailApi (WebApi)
+
+http://localhost:9002/swagger/index.html
+
+- EmailApi Client (HttpClient)
+
+- EmailApi Client (JavascriptClient)
+
+http://localhost:9006 
+
+- EmailApi Client (WebClient/Consumer WebApp)
+
+http://localhost:9008
+
+- WebApp (Mvc, A consumer of this middleware)
+
+http://localhost:9009
 
 ## secrets.json or appsettings.xxx.json
 ```

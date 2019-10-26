@@ -7,8 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		appveyor.yml = appveyor.yml
-		LICENSE = LICENSE
+		global.json = global.json
+		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -22,9 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi", "samples\EmailAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi.HttpClient", "samples\EmailApi.HttpClient\EmailApi.HttpClient.csproj", "{837DB7A6-4B32-4C16-A671-EDE30C68AD1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi.WebClient", "samples\EmailApi.WebApp\EmailApi.WebClient.csproj", "{C8A96145-F403-4D62-AD7F-10B293D4C313}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "samples\WebApp\WebApp.csproj", "{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi.JavascriptClient", "samples\EmailApi.JavascriptClient\EmailApi.JavascriptClient.csproj", "{5601007E-5F84-40A1-9750-41266D1B31E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi.WebClient", "samples\EmailApi.WebClient\EmailApi.WebClient.csproj", "{7D073809-87E9-4427-B171-A97ABB90C4D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,14 +46,18 @@ Global
 		{837DB7A6-4B32-4C16-A671-EDE30C68AD1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{837DB7A6-4B32-4C16-A671-EDE30C68AD1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{837DB7A6-4B32-4C16-A671-EDE30C68AD1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8A96145-F403-4D62-AD7F-10B293D4C313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8A96145-F403-4D62-AD7F-10B293D4C313}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8A96145-F403-4D62-AD7F-10B293D4C313}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8A96145-F403-4D62-AD7F-10B293D4C313}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5601007E-5F84-40A1-9750-41266D1B31E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5601007E-5F84-40A1-9750-41266D1B31E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5601007E-5F84-40A1-9750-41266D1B31E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5601007E-5F84-40A1-9750-41266D1B31E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,8 +66,9 @@ Global
 		{21DECA2E-DE0D-4B6B-9619-C05E9264B4FD} = {51B5AC96-CD24-4342-B808-F3C2785AEAB5}
 		{A233C072-E166-4035-9849-608E439B2694} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{837DB7A6-4B32-4C16-A671-EDE30C68AD1E} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
-		{C8A96145-F403-4D62-AD7F-10B293D4C313} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
+		{5601007E-5F84-40A1-9750-41266D1B31E6} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
+		{7D073809-87E9-4427-B171-A97ABB90C4D9} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D2602F5-C8CB-42E2-8DF6-AAB279E814D9}

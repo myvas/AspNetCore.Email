@@ -62,28 +62,8 @@ namespace Myvas.AspNetCore.WebApi.EmailApi
                 {
                     Version = "v1",
                     Title = "Email API V1",
-                    Description = "A simple ASP.NET Core Web API for Email service",
-                    TermsOfService = "None",
-                    Contact = new Contact
-                    {
-                        Name = "FrankH",
-                        Email = "4848285@qq.com"
-                    },
-                    License = new License
-                    {
-                        Name = "Apache License 2.0",
-                        Url = "https://www.apache.org/licenses/LICENSE-2.0.html"
-                    }
+                    Description = "A simple ASP.NET Core Web API for Email service"
                 });
-                {
-                    // Determine base path for the application.
-                    var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-                    // Set the comments path for the swagger json and ui.
-                    Directory.GetFiles(basePath, "*.xml", SearchOption.TopDirectoryOnly)
-                        .Select(x => Path.GetFullPath(x))
-                        .ToList()
-                        .ForEach(x => options.IncludeXmlComments(x));
-                }
             });
         }
 

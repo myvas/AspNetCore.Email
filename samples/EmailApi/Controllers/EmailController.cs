@@ -20,7 +20,7 @@ namespace Myvas.AspNetCore.WebApi.EmailApi.Controllers
             _emailSender = emailSender ?? throw new ArgumentNullException(nameof(emailSender));
         }
 
-        [HttpGet("plain-sample")]
+        [HttpGet("samples/plain")]
         public IActionResult PlainEmailSample()
         {
             var result = new EmailDto()
@@ -38,7 +38,7 @@ Myvas.AspNetCore.Email",
             return Json(result);
         }
 
-        [HttpGet("html-sample")]
+        [HttpGet("samples/html")]
         public IActionResult HtmlEmailSample()
         {
             var result = new EmailDto()

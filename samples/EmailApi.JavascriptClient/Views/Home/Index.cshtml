@@ -4,10 +4,10 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<form>
-    <input id="recipient" name="recipient" placeholder="Recipient/EmailAddress" type="text" value="noreply@myvas.com" />
-    <textarea id="content" name="content" placeholder="Body/Content" rows="3"></textarea>
-    <input class="sendemail" type="button" value="Send Email" />
+<form>    
+    <input class="form-control" id="recipient" name="recipient" placeholder="Recipient/EmailAddress" type="text" value="noreply@myvas.com" />
+    <textarea class="form-control" id="content" name="content" placeholder="Body/Content" rows="3"></textarea>
+    <input class="sendemail btn btn-success btn-block" type="button" value="Send Email" />
 </form>
 
 <div class="result"></div>

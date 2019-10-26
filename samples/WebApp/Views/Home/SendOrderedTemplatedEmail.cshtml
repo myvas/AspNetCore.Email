@@ -6,12 +6,13 @@
 <h1>@ViewData["Title"]</h1>
 
 <form asp-action="@nameof(HomeController.SendOrderedTemplatedEmail)" method="post">
-    <input asp-for="Recipient" placeholder="Recipient/Email" type="text" value="4848285@qq.com" />
-    <input asp-for="RecipientName" placeholder="RecipientName" type="text" value="FrankH" />
-    <input asp-for="Subject" placeholder="Subject/Title" type="text" value="test" />
-    <input asp-for="Template" placeholder="Template/FileName" type="text" value="ordered.txt" /> <span>eg. ordered.txt or ordered.html</span>
-    <input asp-for="IsHtml" type="checkbox" /><span>Is Html?</span>
-    <input class="send-email" type="submit" value="Send Email" />
+    <input class="form-control" asp-for="Recipient" placeholder="Recipient/Email" type="text" value="4848285@qq.com" />
+    <input class="form-control" asp-for="RecipientName" placeholder="RecipientName" type="text" value="FrankH" />
+    <input class="form-control" asp-for="Subject" placeholder="Subject/Title" type="text" value="test" />
+    <input class="form-control" asp-for="Template" placeholder="Template/FileName" type="text" value="ordered.html" />
+    <div class="help-block">eg. ordered.txt or ordered.html</div>
+    <label class="checkbox-inline"><input asp-for="IsHtml" type="checkbox" checked /><span>Is Html?</span></label>
+    <input class="btn btn-success btn-block" type="submit" value="Send Email" />
 </form>
 
 <div class="@ViewData["Result"]"></div>

@@ -1,33 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>2.1.603</Version>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>Myvas.AspNetCore.Email</AssemblyName>
     <PackageId>Myvas.AspNetCore.Email</PackageId>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Version>2.2.604.0</Version>
+    <PackageVersion>2.2.604</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>AspNetCore IEmailSender EmailSender MailKit</PackageTags>
     <PackageProjectUrl>https://github.com/myvas/AspNetCore.Email</PackageProjectUrl>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <RootNamespace>Myvas.AspNetCore.Email</RootNamespace>
-    <Authors>Myvas</Authors>
     <Description>An AspNetCore service to send Email via MailKit. (Windows and Linux works!)</Description>
-    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <PackageReleaseNotes>(1)AddEmail: IEmailSender, EmailSender; (2)AddEmailTemplate: IEmailTemplate.</PackageReleaseNotes>
+    <Authors>Myvas</Authors>
+    <RootNamespace>Myvas.AspNetCore.Email</RootNamespace>
+    <AssemblyName>Myvas.AspNetCore.Email</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Update="*.nuspec">
-      <Pack>true</Pack>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
     <PackageReference Include="MailKit" Version="2.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
