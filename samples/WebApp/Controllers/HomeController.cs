@@ -23,8 +23,8 @@ namespace WebApp.Controllers
         public IActionResult SendNamedTemplatedEmail() => View();
         public IActionResult SendOrderedTemplatedEmail() => View();
 
-        [HttpPost, ActionName(nameof(SendEmail))]
-        public async Task<IActionResult> SendEmailPost(EmailViewModel vm)
+        [HttpPost]
+        public async Task<IActionResult> SendEmail(EmailViewModel vm)
         {
             if (!ModelState.IsValid)
             {
@@ -33,12 +33,12 @@ namespace WebApp.Controllers
 
             var result = await _email.SendEmailAsync(vm.Recipient, vm.Subject, vm.Body, vm.IsHtml);
             var resultDesc = result ? "success" : "failed";
-            ViewData["Result"] = $"{DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]")} {resultDesc}";
+            ViewData["Result"] = $"{DateTime.Now:[yyyy-MM-dd HH:mm:ss]} {resultDesc}";
             return View();
         }
 
-        [HttpPost, ActionName(nameof(SendNamedTemplatedEmail))]
-        public async Task<IActionResult> SendNamedTemplatedEmailPost(TemplatedEmailViewModel vm)
+        [HttpPost]
+        public async Task<IActionResult> SendNamedTemplatedEmail(TemplatedEmailViewModel vm)
         {
             if (!ModelState.IsValid)
             {
@@ -58,8 +58,8 @@ namespace WebApp.Controllers
         }
 
 
-        [HttpPost, ActionName(nameof(SendOrderedTemplatedEmail))]
-        public async Task<IActionResult> SendOrderedTemplatedEmailPost(TemplatedEmailViewModel vm)
+        [HttpPost]
+        public async Task<IActionResult> SendOrderedTemplatedEmail(TemplatedEmailViewModel vm)
         {
             if (!ModelState.IsValid)
             {

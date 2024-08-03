@@ -1,0 +1,7 @@
+﻿Hello {0},
+
+This is a TEST email.
+The test was on {1}.
+
+Regards,
+Myvas.AspNetCore.Email Template

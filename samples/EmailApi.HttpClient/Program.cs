@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Myvas.AspNetCore.EmailApi.WebClient
 {
-    public class Program
+    public static class Program
     {
         static Program()
         {
@@ -15,12 +15,9 @@ namespace Myvas.AspNetCore.EmailApi.WebClient
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
-        public static void Main(string[] args)
-        {
-            RunAsync().Wait();
-        }
+        public static void Main() => RunAsync().Wait();
 
-        static HttpClient client = new HttpClient();
+        static readonly HttpClient client = new();
 
         static async Task RunAsync()
         {
@@ -38,10 +35,18 @@ namespace Myvas.AspNetCore.EmailApi.WebClient
             });
             var content = new StringContent(
                 json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("api/v1/Email", content);
+            var response = await client.PostAsync("Email", content);
             response.EnsureSuccessStatusCode();
 
-            Console.WriteLine("The e-mail had sent out successfully!");
+            var responseString = await response.Content.ReadAsStringAsync();
+            if (responseString == "false")
+            {
+                Console.WriteLine("The email api method called, but your email probably failed to sent out!");
+            }
+            else
+            {
+                Console.WriteLine("The email api method had invoked, and your email should be sent out successfully!");
+            }
             Console.ReadLine();
         }
     }

@@ -4,34 +4,35 @@
 An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 
 ## Samples
-- EmailApi (WebApi): http://localhost:9002/swagger/index.html
+### EmailApi
+- EmailApi (WebApi, A consumer of this middleware): http://localhost:9002/swagger/index.html
 
-POST api/v1/Email
-```
-{
-  "recipients": "4848285@qq.com;noreply@test.com",
-  "subject": "来自WebApi的测试邮件",  
-  "body": "这是一封来自WebApi的测试邮件，您无须理会此邮件。"
-}
-```
+  POST api/v1/Email
+  ```
+  {
+      "recipients": "4848285@qq.com;noreply@test.com",
+      "subject": "来自WebApi的测试邮件",  
+      "body": "这是一封来自WebApi的测试邮件，您无须理会此邮件。"
+  }
+  ```
 
-- EmailApi Client (Console, HttpClient): dotnet run
-
-- EmailApi Client (JavascriptClient): http://localhost:9006 
-
+- EmailApi Client (Console, HttpClient): `dotnet run`
+- EmailApi Client (JavascriptClient): http://localhost:9006
 - EmailApi Client (WebClient/Consumer WebApp): http://localhost:9008
-
+    
+### WebApp
 - WebApp (Mvc, A consumer of this middleware): http://localhost:9009
 
-## secrets.json or appsettings.xxx.json
-```
-  "Email:SmtpServerSsl": "true",
-  "Email:SmtpServerPort": "465",
-  "Email:SmtpServerAddress": "smtp.myvas.com",
-  "Email:SenderPassword": "<your password>",
-  "Email:SenderDisplayName": "DO-NOT-REPLY",
-  "Email:SenderAccount": "noreply@myvas.com",
-```
+  Settings: secrets.json or appsettings.xxx.json
+  ```
+    "Email:SmtpServerSsl": "true",
+    "Email:SmtpServerPort": "465",
+    "Email:SmtpServerAddress": "smtp.myvas.com",
+    "Email:SenderPassword": "<your password>",
+    "Email:SenderDisplayName": "DO-NOT-REPLY",
+    "Email:SenderAccount": "noreply@myvas.com",
+  ```
+
 ## ConfigureServices:
 1.AddEmail: IEmailSender, EmailSender
 ```csharp
@@ -68,7 +69,7 @@ public class EmailController : Controller
 ```
 
 ## Use Case 2: Implementation of Microsoft.AspNetCore.Identity.UI.Services.IEmailSender:
-Use Case 2 Step 1: EmailService
+Use Case 2 (Step 1): EmailService
 ```csharp
 using Myvas.AspNetCore.Email;
 
@@ -88,7 +89,7 @@ public class EmailService : Microsoft.AspNetCore.Identity.UI.Services.IEmailSend
 }
 ```
 
-Use Case 2 Step 2: ConfigureServices
+Use Case 2 (Step 2): ConfigureServices
 ```csharp
 services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailService>();
 ```

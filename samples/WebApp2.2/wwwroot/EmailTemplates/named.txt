@@ -1,0 +1,6 @@
+﻿Hello [[[user]]],
+This email was sent using the named parameters email template as plain text content.
+The test was on [[[date]]].
+
+Regards,
+Myvas.AspNetCore.Email Template

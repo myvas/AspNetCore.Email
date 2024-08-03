@@ -3,25 +3,23 @@ using Myvas.AspNetCore.Email;
 using System;
 using System.Threading.Tasks;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Myvas.AspNetCore.WebApi.EmailApi.Controllers
 {
-    /// <summary>
-    /// Email
-    /// </summary>
-    [Route("api/v1/[controller]")]
+    [ApiController]
+    [Route("[controller]")]
     public class EmailController : Controller
     {
         private readonly IEmailSender _emailSender;
+        private readonly ILogger<EmailController> _logger;
 
-        public EmailController(IEmailSender emailSender)
+        public EmailController(IEmailSender emailSender, ILogger<EmailController> logger)
         {
             _emailSender = emailSender ?? throw new ArgumentNullException(nameof(emailSender));
+            _logger = logger;
         }
 
         [HttpGet("samples/plain")]
-        public IActionResult PlainEmailSample()
+        public EmailDto PlainEmailSample()
         {
             var result = new EmailDto()
             {
@@ -35,11 +33,11 @@ Best Regards,
 Myvas.AspNetCore.Email",
             };
 
-            return Json(result);
+            return result;
         }
 
         [HttpGet("samples/html")]
-        public IActionResult HtmlEmailSample()
+        public EmailDto HtmlEmailSample()
         {
             var result = new EmailDto()
             {
@@ -53,7 +51,7 @@ Myvas.AspNetCore.Email",
                 IsBodyHtml = true
             };
 
-            return Json(result);
+            return result;
         }
 
 
@@ -69,10 +67,10 @@ Myvas.AspNetCore.Email",
         /// </remarks>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> SendAsync([FromBody]EmailDto input)
+        public async Task<bool> SendAsync([FromBody]EmailDto input)
         {
             var result = await _emailSender.SendEmailAsync(input);
-            return Json(result);
+            return result;
         }
     }
 }

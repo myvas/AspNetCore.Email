@@ -1,0 +1,12 @@
+﻿@model EmailViewModel
+@{
+    ViewData["Title"] = "Myvas.AspNetCore.Email Demo (WebApp)";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<ul>
+    <li><a asp-action="@nameof(HomeController.SendEmail)">Send Email</a></li>
+    <li><a asp-action="@nameof(HomeController.SendNamedTemplatedEmail)">Send Email (Named Template)</a></li>
+    <li><a asp-action="@nameof(HomeController.SendOrderedTemplatedEmail)">Send Email (Ordered Template)</a></li>
+</ul>
