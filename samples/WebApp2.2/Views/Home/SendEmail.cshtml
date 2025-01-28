@@ -1,0 +1,18 @@
+﻿@model EmailViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="@nameof(HomeController.SendEmail)" method="post">
+    <input class="form-control" asp-for="Recipient" placeholder="Recipient/Email" type="text" value="4848285@qq.com" />
+    <input class="form-control" asp-for="Subject" placeholder="Subject/Title" type="text" value="test" />
+    <textarea class="form-control" asp-for="Body" placeholder="Body/Content" rows="3"></textarea>
+    <label class="checkbox-inline">
+        <input asp-for="IsHtml" type="checkbox" /> Is Html?
+    </label>
+    <input class="btn btn-success btn-block" type="submit" value="Send Email" />
+</form>
+
+<div class="@ViewData["Result"]"></div>
