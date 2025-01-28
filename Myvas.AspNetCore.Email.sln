@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.156
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40E3-90BD-3F96AFFA7D92}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		global.json = global.json
 		NuGet.Config = NuGet.Config
 		README.md = README.md
@@ -27,6 +28,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi.JavascriptClient", "samples\EmailApi.JavascriptClient\EmailApi.JavascriptClient.csproj", "{5601007E-5F84-40A1-9750-41266D1B31E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailApi.WebClient", "samples\EmailApi.WebClient\EmailApi.WebClient.csproj", "{7D073809-87E9-4427-B171-A97ABB90C4D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{42145110-570D-4888-9EBF-F37CDB6A6B4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "test\AspNetCore.EmailMiddleware.Tests\UnitTest.csproj", "{87AAB277-AC6A-4FCD-B88C-0750C133C609}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +63,10 @@ Global
 		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D073809-87E9-4427-B171-A97ABB90C4D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87AAB277-AC6A-4FCD-B88C-0750C133C609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87AAB277-AC6A-4FCD-B88C-0750C133C609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87AAB277-AC6A-4FCD-B88C-0750C133C609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87AAB277-AC6A-4FCD-B88C-0750C133C609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +78,7 @@ Global
 		{05F5BCF6-CAF7-42E7-A7A9-3BD0D1586831} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{5601007E-5F84-40A1-9750-41266D1B31E6} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{7D073809-87E9-4427-B171-A97ABB90C4D9} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
+		{87AAB277-AC6A-4FCD-B88C-0750C133C609} = {42145110-570D-4888-9EBF-F37CDB6A6B4E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D2602F5-C8CB-42E2-8DF6-AAB279E814D9}
