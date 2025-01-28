@@ -34,3 +34,10 @@ jobs:
       with:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
+    - name: Create the package (.nupkg)
+      run: dotnet pack -c release
+    - name: Publish the package to nuget.org
+      run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+        # You should create this repository secret on https://github.com/myvas/AspNetCore.Email/settings/secrets/actions
