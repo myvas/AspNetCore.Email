@@ -2,7 +2,7 @@
 # Myvas.AspNetCore.Email
 [![NuGet](https://img.shields.io/nuget/v/Myvas.AspNetCore.Email.svg)](https://www.nuget.org/packages/Myvas.AspNetCore.Email)
 [![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/myvas/AspNetCore.Email?label=github)](https://github.com/myvas/AspNetCore.Email)
-[![GitHub Actions Status](https://github.com/myvas/AspNetCore.Email/actions/workflows/dotnet.yml/badge.svg)](https://github.com/myvas/AspNetCore.Email/blob/master/.github/workflows/dotnet.yml)
+[![GitHub Actions Status](https://github.com/myvas/AspNetCore.Email/actions/workflows/dotnet.yml/badge.svg)](https://github.com/myvas/AspNetCore.Email/actions)
 
 An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 
