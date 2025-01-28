@@ -1,5 +1,6 @@
 
-# Myvas.AspNetCore.Email [![NuGet](https://img.shields.io/nuget/v/Myvas.AspNetCore.Email.svg)](https://www.nuget.org/packages/Myvas.AspNetCore.Email) [![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/myvas/AspNetCore.Email?label=github)](https://github.com/myvas/AspNetCore.Email)
+# Myvas.AspNetCore.Email
+[![NuGet](https://img.shields.io/nuget/v/Myvas.AspNetCore.Email.svg)](https://www.nuget.org/packages/Myvas.AspNetCore.Email) [![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/myvas/AspNetCore.Email?label=github)](https://github.com/myvas/AspNetCore.Email)
 
 An AspNetCore service to send Email via MailKit. (Windows and Linux works!)
 
