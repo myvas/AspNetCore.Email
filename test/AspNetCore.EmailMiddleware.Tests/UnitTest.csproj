@@ -18,9 +18,8 @@
 		<PackageReference Include="xunit" Version="2.5.3" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
 	</ItemGroup>
-
 	<ItemGroup>
-		<ProjectReference Include="..\src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj" />
+	  <ProjectReference Include="..\..\src\AspNetCore.Email\Myvas.AspNetCore.Email.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
