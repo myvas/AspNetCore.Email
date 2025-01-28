@@ -21,7 +21,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
-        cache: true
     - name: Display dotnet version
       run: dotnet --version
     - name: Install dependencies
@@ -35,4 +34,3 @@ jobs:
       with:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
-        if: ${{ always() }}
