@@ -35,7 +35,7 @@ jobs:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
     - name: Create the package (.nupkg)
-      run: dotnet pack -c release
+      run: dotnet pack -c Release
     - name: Publish the package to nuget.org
       run: dotnet nuget push "**/bin/Release/*.nupkg" -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json --skip-duplicate
       env:
