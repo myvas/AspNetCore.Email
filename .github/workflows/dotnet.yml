@@ -1,32 +1,55 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: pack
+name: CI
 
 on:
   push:
-    branches: [ "master", "experimental" ]
+    branches:
+      - master
+      - 'releases/**'
+    tags:
+      - v9.0.**
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
+      - 'releases/**'
+  label:
+    types: [ created, edited ]
+  release:
+    types: [ published ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         dotnet-version: [ '8.0.x' ]
     steps:
-    - uses: actions/checkout@v4
+    - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+    - run: echo "The workflow is now ready to test your code on the runner."
+    - name: List files in the repository
+      run: |
+        ls ${{ github.workspace }}
+
     - name: Setup dotnet ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     - name: Display dotnet version
       run: dotnet --version
+
     - name: Install dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+
     - name: Test with the dotnet CLI
       run: dotnet test --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
     - name: Upload dotnet test results
@@ -34,10 +57,18 @@ jobs:
       with:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
-    - name: Create the package (.nupkg)
+    - run: echo "This job's status is ${{ job.status }}."
+
+  pack-and-publish:
+    if: startsWith(github.event_name, 'release')
+    needs: [ build-and-test ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create the NuGet package (.nupkg)
       run: dotnet pack -c Release
-    - name: Publish the package to nuget.org
+    - name: Publish the NuGet package to nuget.org
       run: dotnet nuget push "**/bin/Release/*.nupkg" -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json --skip-duplicate
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
         # You should create this repository secret on https://github.com/myvas/AspNetCore.Email/settings/secrets/actions
+    - run: echo "This job's status is ${{ job.status }}."
