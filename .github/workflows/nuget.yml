@@ -5,7 +5,7 @@ on:
     types: [ published ]
 
 jobs:
-  build-and-test:
+  build-and-test-2:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,7 +44,7 @@ jobs:
         path: TestResults-${{ matrix.dotnet-version }}
 
   pack-and-publish:
-    needs: [ build-and-test ]
+    needs: [ build-and-test-2 ]
     runs-on: ubuntu-latest
     steps:
     - name: Create the NuGet package (.nupkg)
