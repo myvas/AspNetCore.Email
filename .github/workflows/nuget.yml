@@ -11,7 +11,7 @@ on:
         default: 'warning'
 
 jobs:
-  build-and-test-2:
+  build-and-test-and-pack-and-publish:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -49,10 +49,6 @@ jobs:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
 
-  pack-and-publish:
-    runs-on: ubuntu-latest
-    needs: [ build-and-test-2 ]
-    steps:
     - name: Create the NuGet package (.nupkg)
       run: dotnet pack -c Release
     - name: Publish the NuGet package to nuget.org
