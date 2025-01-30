@@ -1,8 +1,9 @@
-name: CD
+name: deploy
 
 on:
   release:
     types: [ published ]
+
   workflow_dispatch:
     inputs:
       logLevel:
@@ -11,7 +12,7 @@ on:
         default: 'warning'
 
 jobs:
-  build-and-test-and-pack-and-publish:
+  deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -48,6 +49,7 @@ jobs:
       with:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
+      if: ${{ failure() }}
 
     - name: Create the NuGet package (.nupkg)
       run: dotnet pack -c Release
