@@ -9,9 +9,11 @@
 		<Description>An AspNetCore service to send Email via MailKit. (Windows and Linux works!)</Description>
 		<RootNamespace>Myvas.AspNetCore.Email</RootNamespace>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\..\LICENSE.txt" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<ItemGroup>
