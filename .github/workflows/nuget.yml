@@ -1,13 +1,8 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: CI
+name: CD
 
 on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+  release:
+    types: [ published ]
 
 jobs:
   build-and-test:
@@ -47,4 +42,16 @@ jobs:
       with:
         name: dontet-results-${{ matrix.dotnet-version }}
         path: TestResults-${{ matrix.dotnet-version }}
+
+  pack-and-publish:
+    needs: [ build-and-test ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create the NuGet package (.nupkg)
+      run: dotnet pack -c Release
+    - name: Publish the NuGet package to nuget.org
+      run: dotnet nuget push "**/bin/Release/*.nupkg" -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+        # You should create this repository secret on https://github.com/myvas/AspNetCore.Email/settings/secrets/actions
     - run: echo "This job's status is ${{ job.status }}."

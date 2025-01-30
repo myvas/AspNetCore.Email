@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40E3-90BD-3F96AFFA7D92}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40
 		global.json = global.json
 		LICENSE.txt = LICENSE.txt
 		NuGet.Config = NuGet.Config
+		.github\workflows\nuget.yml = .github\workflows\nuget.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
