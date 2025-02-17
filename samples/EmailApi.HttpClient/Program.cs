@@ -11,7 +11,7 @@ namespace Myvas.AspNetCore.EmailApi.WebClient
     {
         static Program()
         {
-            // Console output in Chinese
+            // Console output supporting local code pages
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
