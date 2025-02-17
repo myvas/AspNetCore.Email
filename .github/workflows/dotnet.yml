@@ -27,7 +27,7 @@ jobs:
             framework: 'net8.0'
           - version: '9.0.x'
             framework: 'net9.0'
-        configuration: 'Debug'
+        configuration: [ 'Debug' ]
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
