@@ -50,7 +50,7 @@ jobs:
         framework: [ 'net6.0', 'net7.0', 'net8.0', 'net9.0' ]
     steps:
     - name: Test with the dotnet CLI
-      run: dotnet test --framework "{{ matrix.framework }}" --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.framework }}"
+      run: dotnet test --framework ${{ matrix.framework }} --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.framework }}"
     - name: Upload dotnet test results
       uses: actions/upload-artifact@v4
       with:
