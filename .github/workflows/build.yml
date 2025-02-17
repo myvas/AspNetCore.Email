@@ -21,6 +21,8 @@ jobs:
         configuration: [ 'Debug', 'Release' ]
     uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
     with:
-      dotnet: ${{ matrix.dotnet }}
+      dotnet:
+       version: ${{ matrix.dotnet.version }}
+       framework: ${{ matrix.dotnet.framework }}
       configuration: ${{ matrix.configuration }}
       
