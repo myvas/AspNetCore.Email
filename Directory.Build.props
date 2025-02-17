@@ -8,14 +8,15 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<MinVerMinimumMajorMinor>8.0</MinVerMinimumMajorMinor>
+		<MinVerMinimumMajorMinor>9.0</MinVerMinimumMajorMinor>
 		<MinVerTagPrefix>v</MinVerTagPrefix>
 		<MinVerDefaultPreReleaseIdentifiers>alpha</MinVerDefaultPreReleaseIdentifiers>
-		<MinVerIgnoreHeight>false</MinVerIgnoreHeight>
+		<MinVerIgnoreHeight>true</MinVerIgnoreHeight>
 		<MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
 	</PropertyGroup>
 	<Target Name="CustomFileVersion" AfterTargets="MinVer">
 		<PropertyGroup>
+			<GITHUB_RUN_NUMBER Condition="'$(GITHUB_RUN_NUMBER)' == ''">0</GITHUB_RUN_NUMBER>
 			<FileVersion Condition="'$(MinVerMajor).$(MinVerMinor)' == '$(MinVerMinimumMajorMinor)'">$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).$([System.DateTime]::Now.AddYears(-2021).ToString("yMMdd"))</FileVersion>
 		</PropertyGroup>
 	</Target>

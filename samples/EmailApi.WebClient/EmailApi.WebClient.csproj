@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
 		<PreserveCompilationContext>true</PreserveCompilationContext>
-		<AssemblyName>AspNetCore.EmailApi.WebApp</AssemblyName>
 		<UserSecretsId>f9197f52-ee44-44b1-bc42-6aa475fb7b7e</UserSecretsId>
 	</PropertyGroup>
 

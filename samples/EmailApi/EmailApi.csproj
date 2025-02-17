@@ -2,8 +2,9 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<UserSecretsId>EmailApi</UserSecretsId>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<UserSecretsId>EmailApi</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
