@@ -41,6 +41,10 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
+      - name: Show working-directory
+        run: |
+          pwd
+          ls
 
   test:
     needs: [ build ]
@@ -51,9 +55,9 @@ jobs:
     steps:
     - name: Enter the build dir
       run: |
-          ls ${{ github.workspace }}
-          pwd
-          cd ${{ github.workspace }}
+        ls ${{ github.workspace }}
+        pwd
+        cd ${{ github.workspace }}
     - name: Test with the dotnet CLI
       run: dotnet test --framework ${{ matrix.framework }} --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.framework }}"
     - name: Upload dotnet test results
