@@ -15,8 +15,7 @@ on:
 
 jobs:
   build-and-test-debug:
-    uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
-    with:
+    strategy:
       matrix:
         dotnet:
           - version: '6.0.x'
@@ -28,4 +27,8 @@ jobs:
           - version: '9.0.x'
             framework: 'net9.0'
         configuration: [ 'Debug', 'Release' ]
+    uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
+    with:
+      dotnet: ${{ matrix.dotnet }}
+      configuration: ${{ matrix.configuration }}
       
