@@ -24,7 +24,7 @@ jobs:
         cat ./.github/workflows/build-n-test.yml
 
     - name: Call reusable workflow to build and test
-      uses: ./.github/workflows/build-n-test.yml
+      uses: ./.github/workflows/build-n-test
       with:
         configuration: "Release"
     
