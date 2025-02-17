@@ -10,15 +10,15 @@ on:
         description: "an array of { version: '8.0.x', framework: 'net8.0'}"
         required: true
         type: object
-        default:
-          - version: '6.0.x'
-            framework: 'net6.0'
-          - version: '7.0.x'
-            framework: 'net7.0'
-          - version: '8.0.x'
-            framework: 'net8.0'
-          - version: '9.0.x'
-            framework: 'net9.0'
+        #default:
+        #  - version: '6.0.x'
+        #    framework: 'net6.0'
+        #  - version: '7.0.x'
+        #    framework: 'net7.0'
+        #  - version: '8.0.x'
+        #    framework: 'net8.0'
+        #  - version: '9.0.x'
+        #    framework: 'net9.0'
       configuration:
         description: "The configuration to use for building the package. The default is 'Debug' and 'Release'."
         required: true
@@ -30,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        - dotnet: ${{ inputs.dotnet }}
-        - configuration: ${{ inputs.configuration }}
+        dotnet: ${{ inputs.dotnet }}
+        configuration: ${{ inputs.configuration }}
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
