@@ -12,6 +12,7 @@ on:
     branches: [ master ]
     paths-ignore:
       - "*.md"
+
 jobs:
   build-and-test-debug:
     uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
