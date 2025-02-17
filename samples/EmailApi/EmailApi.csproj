@@ -2,14 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<AssemblyName>EmailApi</AssemblyName>
 		<UserSecretsId>EmailApi</UserSecretsId>
 		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>
-		</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
