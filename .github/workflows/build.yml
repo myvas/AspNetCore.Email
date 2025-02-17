@@ -13,7 +13,14 @@ on:
     paths-ignore:
       - "*.md"
 jobs:
-  build-and-test:
+  build-and-test-debug:
+    uses: myvas/AspNetCore.Email/.github/workflows/reusable/build-and-test.yml@9.0
+    with:
+      configuration: 'Debug'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      
+  build-and-test-release:
     uses: myvas/AspNetCore.Email/.github/workflows/reusable/build-and-test.yml@9.0
     with:
       configuration: 'Release'
