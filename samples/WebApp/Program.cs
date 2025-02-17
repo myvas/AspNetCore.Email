@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Text;
 
-// Console output supporting local code pages
+// Console output in local language
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 var configuration = GetConfiguration(args);
@@ -13,7 +13,7 @@ Log.Logger = new LoggerConfiguration()
 var assembly = typeof(Program).Assembly;
 var assemblyName = assembly.GetName().Name;
 var assemblyVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
-Log.Information($"{assemblyName} {assemblyVersion} starting up...");
+Log.Information($"{assemblyName} {assemblyVersion} starting up中文...");
 
 try
 {
