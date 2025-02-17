@@ -7,6 +7,6 @@ on:
 
 jobs:
   pack-and-publish:
-    uses: myvas/AspNetCore.Email/.github/workflows/reusable/pack-n-publish.yml@9.0
+    uses: myvas/AspNetCore.Email/.github/workflows/reusable/pack-and-publish.yml@9.0
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

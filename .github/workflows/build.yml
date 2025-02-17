@@ -14,7 +14,7 @@ on:
       - "*.md"
 jobs:
   build-and-test:
-    uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
+    uses: myvas/AspNetCore.Email/.github/workflows/reusable/build-and-test.yml@9.0
     with:
       configuration: 'Release'
     secrets:
