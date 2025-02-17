@@ -40,8 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
 		.github\dependabot.yml = .github\dependabot.yml
 		.github\workflows\pack-and-publish.yml = .github\workflows\pack-and-publish.yml
-		.github\workflows\test.yml = .github\workflows\test.yml
 		.github\workflows\publish.yml = .github\workflows\publish.yml
+		.github\workflows\test.yml = .github\workflows\test.yml
 	EndProjectSection
 EndProject
 Global
