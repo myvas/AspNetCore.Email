@@ -1,8 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: test
-run-name: ${{ github.actor }} is testing ${{ github.repository }}@${{ github.ref }} triggered by a ${{ github.event_name }} event.
+name: build
 on:
   workflow_dispatch:
   push:
@@ -31,7 +30,7 @@ jobs:
       - run: echo "The workflow is now ready to test your code on the runner."
     
       - name: build and test
-        uses: ./github/workflows/build-n-test
+        uses: ./.github/workflows/build-n-test
         with:
           configuration: 'Release'
       - run: echo "This job's status is ${{ job.status }}."
