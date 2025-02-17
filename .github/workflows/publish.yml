@@ -1,7 +1,7 @@
 # This workflow will publish NuGet packages to nuget.org
 # For more information see: https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/about-packaging-with-github-actions
 
-name: deploy
+name: publish
 
 on:
   workflow_dispatch:
@@ -10,6 +10,6 @@ on:
 
 jobs:
   pack-and-publish:
-    uses: myvas/AspNetCore.Email/.github/workflows/pack-and-publish.yml@9.0
+    uses: ./.github/workflows/pack-and-publish.yml
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
