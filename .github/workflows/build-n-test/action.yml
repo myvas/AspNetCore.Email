@@ -13,7 +13,8 @@ on:
         default: "Release"
     secrets:
       token:
-        required: true
+        description: 'A token passed from the caller workflow. It should be secrets.GITHUB_TOKEN.'
+        required: false
         
 jobs:
   build-and-test:
