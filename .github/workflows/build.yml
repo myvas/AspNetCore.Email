@@ -27,7 +27,7 @@ jobs:
           - version: '9.0.x'
             framework: 'net9.0'
         configuration: [ 'Debug', 'Release' ]
-    uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
+    uses: ./.github/workflows/build-and-test.yml
     with:
       dotnet-version: ${{ matrix.dotnet.version }}
       dotnet-framework: ${{ matrix.dotnet.framework }}

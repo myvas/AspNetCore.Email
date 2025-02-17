@@ -7,17 +7,17 @@ on:
   workflow_call:
     inputs:
       dotnet-version:
-        description: "an array of { version: '8.0.x', framework: 'net8.0'}"
+        description: "required dotnet version. The default is '8.0.x'."
         required: true
         type: string
         default: '8.0.x'
       dotnet-framework:
-        description: "framework, e.g. 'net8.0'"
+        description: "target framework for dotnet test. The default is 'net8.0'."
         required: true
         type: string
         default: 'net8.0'
       configuration:
-        description: "The configuration to use for building the package. The default is 'Debug' and 'Release'."
+        description: "The configuration to use for building the package. The default is 'Release'."
         required: true
         type: string
         default: 'Release'
