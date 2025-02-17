@@ -1,0 +1,12 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+  release:
+    types: [ published ]
+
+jobs:
+  pack-and-publish:
+    uses: myvas/AspNetCore.Email/.github/workflows/reusable/pack-n-publish.yml@9.0
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

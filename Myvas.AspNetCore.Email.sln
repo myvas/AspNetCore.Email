@@ -7,16 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{1AA6D6D6-EDD0-40
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		.github\workflows\build-n-test\action.yml = .github\workflows\build-n-test\action.yml
-		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\dependabot.yml = .github\dependabot.yml
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		global.json = global.json
 		LICENSE.txt = LICENSE.txt
 		NuGet.Config = NuGet.Config
-		.github\workflows\nuget.yml = .github\workflows\nuget.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -39,6 +34,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{42145110-570D-4888-9EBF-F37CDB6A6B4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Email.Tests", "test\Email.Tests\Email.Tests.csproj", "{5FC6F9A9-A287-7B37-8D4C-4684B8F1CC40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\reusable\build-and-test.yml = .github\workflows\reusable\build-and-test.yml
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\dependabot.yml = .github\dependabot.yml
+		.github\workflows\deploy.yml = .github\workflows\deploy.yml
+		.github\workflows\reusable\pack-and-publish.yml = .github\workflows\reusable\pack-and-publish.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +90,7 @@ Global
 		{5601007E-5F84-40A1-9750-41266D1B31E6} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{7D073809-87E9-4427-B171-A97ABB90C4D9} = {E46ECC89-5A1E-4513-9B8E-9EFAC9D60ACD}
 		{5FC6F9A9-A287-7B37-8D4C-4684B8F1CC40} = {42145110-570D-4888-9EBF-F37CDB6A6B4E}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {1AA6D6D6-EDD0-40E3-90BD-3F96AFFA7D92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D2602F5-C8CB-42E2-8DF6-AAB279E814D9}
