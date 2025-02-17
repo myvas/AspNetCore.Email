@@ -33,7 +33,7 @@ jobs:
         uses: ./.github/workflows/build-n-test
         with:
           configuration: 'Release'
-        secrets:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          secrets:
+            token: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "This job's status is ${{ job.status }}."
       
