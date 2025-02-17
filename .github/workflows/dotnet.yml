@@ -17,6 +17,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        framework: [ 'net6.0', 'net7.0', 'net8.0', 'net9.0' ]
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -41,29 +44,14 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
-      - name: Show working-directory
-        run: |
-          pwd
-          ls
 
-  test:
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        framework: [ 'net6.0', 'net7.0', 'net8.0', 'net9.0' ]
-    steps:
-    - name: Enter the build dir
-      run: |
-        ls ${{ github.workspace }}
-        pwd
-        cd ${{ github.workspace }}
-    - name: Test with the dotnet CLI
-      run: dotnet test --framework ${{ matrix.framework }} --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.framework }}"
-    - name: Upload dotnet test results
-      uses: actions/upload-artifact@v4
-      with:
-        name: dontet-results-${{ matrix.framework }}
-        path: TestResults-${{ matrix.framework }}
-      if: ${{ always() }}
-    - run: echo "This job's status is ${{ job.status }}."
+      - name: Test with the dotnet CLI
+        run: dotnet test --framework ${{ matrix.framework }} --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.framework }}"
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dontet-results-${{ matrix.framework }}
+          path: TestResults-${{ matrix.framework }}
+        if: ${{ always() }}
+      - run: echo "This job's status is ${{ job.status }}."
+      
