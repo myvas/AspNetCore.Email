@@ -19,7 +19,9 @@ jobs:
     - run: echo "The workflow is now ready to test your code on the runner."
     - name: List files in the repository
       run: |
-        ls ${{ github.workspace }}
+        ls -la ${{ github.workspace }}
+        pwd
+        cat ./.github/workflows/build-n-test.yml
 
     - name: Check out repository code
       uses: ./.github/workflows/build-n-test.yml
