@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet: ${{ inputs.dotnet }}
+        dotnet: ${{ fromJson(inputs.dotnet) }}
         configuration: ${{ inputs.configuration }}
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
