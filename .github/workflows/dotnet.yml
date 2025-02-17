@@ -40,12 +40,12 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet.version }}
           global-json-file: global.json
-          cache: true
+          cache: false
       - name: Display dotnet version
         run: dotnet --version
     
       - name: Install dependencies
-        run: dotnet restore --locked-mode
+        run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
 
