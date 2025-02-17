@@ -3,7 +3,7 @@ using Serilog;
 using System.Reflection;
 using System.Text;
 
-// Console output in local language
+// Console output supporting local code pages
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 var configuration = GetConfiguration(args);
@@ -14,7 +14,7 @@ Log.Logger = new LoggerConfiguration()
 var assembly = typeof(Program).Assembly;
 var assemblyName = assembly.GetName().Name;
 var assemblyVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
-Log.Information($"{assemblyName} {assemblyVersion} starting up中文...");
+Log.Information($"{assemblyName} {assemblyVersion} starting up...");
 
 try
 {
