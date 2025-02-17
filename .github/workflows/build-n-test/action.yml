@@ -11,7 +11,11 @@ on:
         required: true
         type: string
         default: "Release"
-
+    secrets:
+      token:
+        description: "GITHUB_TOKEN"
+        required: true
+        
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
