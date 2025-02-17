@@ -2,7 +2,7 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: test
-
+run-name: ${{ github.actor }} is testing ${{ github.repository }}@${{ github.ref }} on a ${{ runner.os }} server triggered by a ${{ github.event_name }} event.
 on:
   workflow_dispatch:
   push:
@@ -13,7 +13,6 @@ on:
     branches: [ master ]
     paths-ignore:
       - "*.md"
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -28,6 +27,7 @@ jobs:
             framework: 'net8.0'
           - version: '9.0.x'
             framework: 'net9.0'
+        configuration: 'Debug'
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
@@ -41,7 +41,7 @@ jobs:
       - run: echo "The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls -la ${{ github.workspace }}
     
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
@@ -55,15 +55,15 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore --configuration ${{ matrix.configuration }}
 
       - name: Test with the dotnet CLI
-        run: dotnet test --framework ${{ matrix.dotnet.framework }} --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.dotnet.framework }}"
+        run: dotnet test --no-build --configuration ${{ matrix.configuration }} --framework ${{ matrix.dotnet.framework }} --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.configuration }}-${{ matrix.dotnet.framework }}"
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v4
         with:
-          name: dontet-results-${{ matrix.dotnet.framework }}
-          path: TestResults-${{ matrix.dotnet.framework }}
+          name: dontet-results-${{ matrix.configuration }}-${{ matrix.dotnet.framework }}
+          path: TestResults-${{ matrix.configuration }}-${{ matrix.dotnet.framework }}
         if: ${{ always() }}
       - run: echo "This job's status is ${{ job.status }}."
       
