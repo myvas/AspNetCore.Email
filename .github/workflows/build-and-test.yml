@@ -6,29 +6,21 @@ name: build-and-test (reusable workflow)
 on:
   workflow_call:
     inputs:
-      dotnet:
-        version:
-          description: "an array of { version: '8.0.x', framework: 'net8.0'}"
-          required: true
-          type: string
-        framework:
-          description: "framework, e.g. 'net8.0'"
-          required: true
-          type: string
-        #default:
-        #  - version: '6.0.x'
-        #    framework: 'net6.0'
-        #  - version: '7.0.x'
-        #    framework: 'net7.0'
-        #  - version: '8.0.x'
-        #    framework: 'net8.0'
-        #  - version: '9.0.x'
-        #    framework: 'net9.0'
+      dotnet-version:
+        description: "an array of { version: '8.0.x', framework: 'net8.0'}"
+        required: true
+        type: string
+        default: '8.0.x'
+      dotnet-framework:
+        description: "framework, e.g. 'net8.0'"
+        required: true
+        type: string
+        default: 'net8.0'
       configuration:
         description: "The configuration to use for building the package. The default is 'Debug' and 'Release'."
         required: true
         type: string
-        #default: [ 'Debug', 'Release' ]
+        default: 'Release'
                   
 jobs:
   build-and-test:
@@ -36,7 +28,7 @@ jobs:
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
-      - run: echo "The inputs.dotnet is ${{ inputs.dotnet.version }}, ${{ inputs.dotnet.framework }}."
+      - run: echo "The inputs.dotnet version is ${{ inputs.dotnet-version }}, framework is ${{ inputs.dotnet-framework }}."
       - run: echo "The inputs.configuration is ${{ inputs.configuration }}."
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -53,7 +45,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ inputs.dotnet.version }}
+          dotnet-version: ${{ inputs.dotnet-version }}
           global-json-file: global.json
           cache: false
       - name: Display dotnet version
@@ -65,12 +57,12 @@ jobs:
         run: dotnet build --no-restore --configuration ${{ inputs.configuration }}
 
       - name: Test with the dotnet CLI
-        run: dotnet test --no-build --framework ${{ inputs.dotnet.framework }} --configuration ${{ inputs.configuration }} --verbosity normal --logger trx --results-directory "TestResults-${{ inputs.configuration }}-${{ inputs.dotnet.framework }}"
+        run: dotnet test --no-build --framework ${{ inputs.dotnet-framework }} --configuration ${{ inputs.configuration }} --verbosity normal --logger trx --results-directory "TestResults-${{ inputs.configuration }}-${{ inputs.dotnet-framework }}"
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v4
         with:
-          name: dontet-results-${{ inputs.configuration }}-${{ inputs.dotnet.framework }}
-          path: TestResults-${{ inputs.configuration }}-${{ inputs.dotnet.framework }}
+          name: dontet-results-${{ inputs.configuration }}-${{ inputs.dotnet-framework }}
+          path: TestResults-${{ inputs.configuration }}-${{ inputs.dotnet-framework }}
         if: ${{ always() }}
 
       - run: echo "This job's status is ${{ job.status }}."
