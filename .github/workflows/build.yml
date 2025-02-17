@@ -29,8 +29,8 @@ jobs:
           ls -la ${{ github.workspace }}
       - run: echo "The workflow is now ready to test your code on the runner."
     
-      - name: build and test
-        uses: ./.github/workflows/build-n-test
+      - name: Call the reusable workflow to build and test
+        uses: myvas/AspNetCore.Email/.github/workflows/build-n-test/action.yml@9.0
         with:
           configuration: 'Release'
         secrets:
