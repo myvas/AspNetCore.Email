@@ -9,7 +9,7 @@ on:
       dotnet:
         description: "an array of { version: '8.0.x', framework: 'net8.0'}"
         required: true
-        type: object
+        type: string
         #default:
         #  - version: '6.0.x'
         #    framework: 'net6.0'
@@ -22,7 +22,7 @@ on:
       configuration:
         description: "The configuration to use for building the package. The default is 'Debug' and 'Release'."
         required: true
-        type: object
+        type: string
         #default: [ 'Debug', 'Release' ]
                   
 jobs:
