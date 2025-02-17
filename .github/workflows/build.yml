@@ -30,10 +30,10 @@ jobs:
       - run: echo "The workflow is now ready to test your code on the runner."
     
       - name: build and test
-        uses: ./.github/workflows/reusable-build-workflow.yml
+        uses: ./.github/workflows/build-n-test
         with:
           configuration: 'Release'
-        #secrets:
-        #  token: ${{ secrets.GITHUB_TOKEN }}
+        secrets:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "This job's status is ${{ job.status }}."
       
