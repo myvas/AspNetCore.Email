@@ -5,16 +5,6 @@ name: build-and-test (reusable workflow)
 
 on:
   workflow_call:
-    inputs:
-      configuration:
-        description: "The configuration to use for building the package. The default is 'Release'."
-        required: true
-        type: string
-        default: "Release"
-    secrets:
-      token:
-        description: 'A token passed from the caller workflow. It should be secrets.GITHUB_TOKEN.'
-        required: false
         
 jobs:
   build-and-test:
@@ -30,6 +20,7 @@ jobs:
             framework: 'net8.0'
           - version: '9.0.x'
             framework: 'net9.0'
+        configuration: [ 'Debug', 'Release' ]
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
@@ -58,15 +49,15 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore --configuration ${{ inputs.configuration }}
+        run: dotnet build --no-restore --configuration ${{ matrix.configuration }}
 
       - name: Test with the dotnet CLI
-        run: dotnet test --no-build --framework ${{ matrix.dotnet.framework }} --configuration ${{ inputs.configuration }} --verbosity normal --logger trx --results-directory "TestResults-${{ inputs.configuration }}-${{ matrix.dotnet.framework }}"
+        run: dotnet test --no-build --framework ${{ matrix.dotnet.framework }} --configuration ${{ matrix.configuration }} --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.configuration }}-${{ matrix.dotnet.framework }}"
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v4
         with:
-          name: dontet-results-${{ inputs.configuration }}-${{ matrix.dotnet.framework }}
-          path: TestResults-${{ inputs.configuration }}-${{ matrix.dotnet.framework }}
+          name: dontet-results-${{ matrix.configuration }}-${{ matrix.dotnet.framework }}
+          path: TestResults-${{ matrix.configuration }}-${{ matrix.dotnet.framework }}
         if: ${{ always() }}
 
       - run: echo "This job's status is ${{ job.status }}."
