@@ -7,16 +7,25 @@ on:
   workflow-call:
     inputs:
       configuration:
-        required: false
+        description: "The configuration to use for building the package. The default is 'Release'."
+        required: true
         type: string
-        default: Release
+        default: "Release"
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet: [ {version: '6.0.x', framework: 'net6.0'}, {version: '7.0.x', framework: 'net7.0'}, {version: '8.0.x', framework: 'net8.0'}, {version: '9.0.x', framework: 'net9.0'} ]
+        dotnet:
+          - version: '6.0.x'
+            framework: 'net6.0'
+          - version: '7.0.x'
+            framework: 'net7.0'
+          - version: '8.0.x'
+            framework: 'net8.0'
+          - version: '9.0.x'
+            framework: 'net9.0'
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
@@ -44,10 +53,10 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore --configuration ${{ inputs.configuration }}
 
       - name: Test with the dotnet CLI
-        run: dotnet test --framework ${{ matrix.dotnet.framework }} --no-build --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.dotnet.framework }}"
+        run: dotnet test --no-build --framework ${{ matrix.dotnet.framework }} --configuration ${{ inputs.configuration }} --verbosity normal --logger trx --results-directory "TestResults-${{ matrix.dotnet.framework }}"
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v4
         with:
