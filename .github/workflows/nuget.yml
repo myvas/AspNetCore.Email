@@ -21,7 +21,7 @@ jobs:
       run: |
         ls -la ${{ github.workspace }}
         pwd
-        cat ./.github/workflows/build-n-test.yml
+        cat ./.github/workflows/build-n-test/action.yml
 
     - name: Call reusable workflow to build and test
       uses: ./.github/workflows/build-n-test
