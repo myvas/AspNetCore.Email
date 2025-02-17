@@ -29,6 +29,7 @@ jobs:
       configuration: ${{ matrix.configuration }}
   
   pack-and-publish:
+    needs: [ 'build-and-test' ]
     uses: ./.github/workflows/pack-and-publish.yml
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
