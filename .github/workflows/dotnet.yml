@@ -20,6 +20,8 @@ jobs:
     strategy:
       matrix:
         dotnet: [ {version: '6.0.x', framework: 'net6.0'}, {version: '7.0.x', framework: 'net7.0'}, {version: '8.0.x', framework: 'net8.0'}, {version: '9.0.x', framework: 'net9.0'} ]
+    env:
+      NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -33,19 +35,17 @@ jobs:
         run: |
           ls ${{ github.workspace }}
     
-      - name: Setup dotnet for test on ${{ matrix.dotnet.version }}
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet.version }}
-      - name: Setup dotnet for build
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.x
+          global-json-file: global.json
+          cache: true
       - name: Display dotnet version
         run: dotnet --version
     
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore --locked-mode
       - name: Build
         run: dotnet build --no-restore
 
