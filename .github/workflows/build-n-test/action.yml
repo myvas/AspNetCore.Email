@@ -13,7 +13,6 @@ on:
         default: "Release"
     secrets:
       token:
-        description: "GITHUB_TOKEN"
         required: true
         
 jobs:
