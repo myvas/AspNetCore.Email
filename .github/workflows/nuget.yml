@@ -23,7 +23,7 @@ jobs:
         pwd
         cat ./.github/workflows/build-n-test.yml
 
-    - name: Check out repository code
+    - name: Call reusable workflow to build and test
       uses: ./.github/workflows/build-n-test.yml
       with:
         configuration: Release        
