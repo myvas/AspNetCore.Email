@@ -15,4 +15,16 @@ on:
 jobs:
   build-and-test-debug:
     uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
+    with:
+      matrix:
+        dotnet:
+          - version: '6.0.x'
+            framework: 'net6.0'
+          - version: '7.0.x'
+            framework: 'net7.0'
+          - version: '8.0.x'
+            framework: 'net8.0'
+          - version: '9.0.x'
+            framework: 'net9.0'
+        configuration: [ 'Debug', 'Release' ]
       

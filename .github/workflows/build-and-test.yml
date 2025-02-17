@@ -5,22 +5,28 @@ name: build-and-test (reusable workflow)
 
 on:
   workflow_call:
-        
+    inputs:
+      matrix:
+        description: 'Matrix input'
+        required: true
+        type: object
+        default:
+          dotnet:
+            - version: '6.0.x'
+              framework: 'net6.0'
+            - version: '7.0.x'
+              framework: 'net7.0'
+            - version: '8.0.x'
+              framework: 'net8.0'
+            - version: '9.0.x'
+              framework: 'net9.0'
+          configuration: [ 'Debug', 'Release' ]
+                  
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        dotnet:
-          - version: '6.0.x'
-            framework: 'net6.0'
-          - version: '7.0.x'
-            framework: 'net7.0'
-          - version: '8.0.x'
-            framework: 'net8.0'
-          - version: '9.0.x'
-            framework: 'net9.0'
-        configuration: [ 'Debug', 'Release' ]
+      matrix: ${{ inputs.matrix }}
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
