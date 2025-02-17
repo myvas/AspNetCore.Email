@@ -15,6 +15,4 @@ on:
 jobs:
   build-and-test-debug:
     uses: myvas/AspNetCore.Email/.github/workflows/build-and-test.yml@9.0
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
       
