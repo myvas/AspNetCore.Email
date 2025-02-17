@@ -23,7 +23,7 @@ on:
         description: "The configuration to use for building the package. The default is 'Debug' and 'Release'."
         required: true
         type: object
-        default: [ 'Debug', 'Release' ]
+        #default: [ 'Debug', 'Release' ]
                   
 jobs:
   build-and-test:

@@ -14,7 +14,7 @@ on:
       - "*.md"
 
 jobs:
-  build-and-test-debug:
+  build-and-test:
     strategy:
       matrix:
         dotnet:
