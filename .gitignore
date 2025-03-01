@@ -9,6 +9,7 @@ Logs/
 project.lock.json
 project.*.lock.json
 .vs/
+.vscode/
 
 # Nuget packages
 nupkg/*.nupkg
